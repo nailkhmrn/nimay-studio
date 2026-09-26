@@ -1,7 +1,9 @@
 import { Container } from "./container";
 import { Grid } from "./grid";
 import { CurrentLink } from "@/components/navigation/current-link";
+import { AnalyticsPreferencesButton } from "@/components/analytics/analytics-consent";
 import { studioContact } from "@/content/studio";
+import Link from "next/link";
 
 export function SiteFooter() {
   return (
@@ -17,6 +19,10 @@ export function SiteFooter() {
         </Grid>
         <div className="contact-bottom">
           <CurrentLink href="/" className="wordmark brand-link" aria-label="NIMAY — Home">NIMAY</CurrentLink>
+          <div className="footer-privacy-controls">
+            <Link className="footer-privacy-link type-label" href="/privacy">Privacy</Link>
+            <AnalyticsPreferencesButton />
+          </div>
           <p className="type-label">© 2026</p>
         </div>
       </Container>
