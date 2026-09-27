@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/container";
-import { Grid } from "@/components/layout/grid";
 import { Section } from "@/components/layout/section";
 import { Approach } from "@/components/sections/approach";
 import { Engagements } from "@/components/sections/engagements";
@@ -22,7 +21,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd(locale)).replace(/</g, "\\u003c") }} />
     <Hero content={content} />
-    <Section id="selected-work" className="selected-work" aria-labelledby="selected-work-title"><Container><Grid className="section-heading"><div><p className="type-label">{content.labels.selectedWork}</p><p id="selected-work-title" className="type-body text-muted">{content.selectedWork.framing}</p></div><p className="type-label text-muted section-count">{content.labels.projectCount}</p></Grid><div className="project-list">{projects.map((project) => <FeaturedProject key={project.slug} project={project} content={content} />)}</div></Container></Section>
+    <Section id="selected-work" className="selected-work" aria-labelledby="selected-work-title"><Container><div className="work-index"><h2 id="selected-work-title" className="type-label">{content.labels.selectedWork}</h2><span className="type-label">{content.labels.projectCount}</span></div><p className="work-framing type-small text-muted">{content.selectedWork.framing}</p><div className="project-list">{projects.map((project, index) => <FeaturedProject key={project.slug} project={project} content={content} locale={locale} number={index === 0 ? "01" : "02"} />)}</div></Container></Section>
     <Engagements content={content} facts={engagements} />
     <Approach content={content} />
     <StudioStatement content={content} />

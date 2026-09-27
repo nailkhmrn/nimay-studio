@@ -1,4 +1,5 @@
 import { Container } from "@/components/layout/container";
+import { Grid } from "@/components/layout/grid";
 import { Section } from "@/components/layout/section";
 import type { SiteContent } from "@/content/types";
 import type { engagements as engagementFacts } from "@/content/shared";
@@ -7,33 +8,41 @@ export function Engagements({ content, facts }: { content: SiteContent; facts: r
   return (
     <Section id="engagements" className="engagements" aria-labelledby="engagements-title">
       <Container>
-        <div className="section-heading">
-          <p className="type-label">{content.labels.engagements}</p>
+        <Grid className="engagements-heading">
+          <p className="type-label engagements-label">{content.labels.engagements}</p>
           <h2 id="engagements-title" className="type-editorial">{content.labels.websiteEngagements}</h2>
-        </div>
-        <div className="engagement-list">
+        </Grid>
+        <ol className="engagement-list">
           {facts.map((fact) => {
             const item = content.engagements[fact.id]!;
             return (
-              <article className="engagement-card" key={fact.id}>
-                <div className="engagement-card-heading">
-                  <span className="type-label text-muted">{fact.number}</span>
-                  <h3 className="type-h2">{fact.name}</h3>
-                  <p className="type-label engagement-price">{fact.price}</p>
-                </div>
-                <p className="type-body text-muted engagement-audience">{item.audience}</p>
-                <div className="engagement-meta">
-                  <div><span className="type-label text-muted">{content.labels.typicalTimeline}</span><p>{item.timelineLabel}</p></div>
-                  {item.scopeIntro && <p className="type-body text-muted">{item.scopeIntro}</p>}
-                  <div><span className="type-label text-muted">{item.scopeLabel}</span><ul>{item.scope.map((scope) => <li key={scope}>{scope}</li>)}</ul></div>
-                  {item.note && <p className="type-body text-muted">{item.note}</p>}
-                </div>
-              </article>
+              <li className="engagement" key={fact.id}>
+                <Grid className="engagement-grid">
+                  <div className="engagement-identity">
+                    <span className="type-label text-muted engagement-number">{fact.number}</span>
+                    <h3 className="type-h2">{fact.name}</h3>
+                  </div>
+                  <p className="type-h3 engagement-price">{content.labels.pricePrefix} {fact.price}</p>
+                  <p className="type-body text-muted engagement-audience">{item.audience}</p>
+                  <div className="engagement-timeline">
+                    <p className="type-label">{content.labels.typicalTimeline}</p>
+                    <p className="type-small">{item.timelineLabel}</p>
+                  </div>
+                  <div className="engagement-scope">
+                    {item.scopeIntro && <p className="type-body text-muted engagement-scope-intro">{item.scopeIntro}</p>}
+                    <p className="type-label">{item.scopeLabel}</p>
+                    <ul className="type-small">{item.scope.map((scope) => <li key={scope}>{scope}</li>)}</ul>
+                    {item.note && <p className="type-small text-muted engagement-note">{item.note}</p>}
+                  </div>
+                </Grid>
+              </li>
             );
           })}
+        </ol>
+        <div className="engagement-terms">
+          <div className="engagement-terms-label"><p className="type-label">{content.labels.terms}</p></div>
+          <ul className="type-small text-muted">{content.terms.map((term) => <li key={term}>{term}</li>)}</ul>
         </div>
-        <p className="type-label text-muted engagements-note">{content.labels.terms}</p>
-        <ul className="terms-list type-body text-muted">{content.terms.map((term) => <li key={term}>{term}</li>)}</ul>
       </Container>
     </Section>
   );

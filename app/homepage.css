@@ -10,12 +10,14 @@
   .project-index-entry { padding-block: var(--section-space); }
   .project-index-entry + .project-index-entry { border-top: 1px solid var(--hairline); }
   .project-index-grid { align-items: start; row-gap: var(--space-5); }
-  .project-index-number, .project-index-identity, .project-index-meta, .project-index-link { grid-column: 1 / -1; }
-  .project-index-number { margin-bottom: -0.5rem; }
-  .project-index-primary { display: contents; }
-  .project-index-identity { grid-row: 2; }
-  .project-index-meta { grid-row: 3; }
-  .project-index-link { grid-row: 4; }
+.project-index-number, .project-index-media, .project-index-identity, .project-index-meta, .project-index-link { grid-column: 1 / -1; }
+.project-index-number { margin-bottom: -0.5rem; }
+.project-index-media { grid-row: 2; overflow: hidden; aspect-ratio: 16 / 10; }
+.project-index-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+.project-index-primary { display: contents; }
+.project-index-identity { grid-row: 3; }
+.project-index-meta { grid-row: 4; }
+.project-index-link { grid-row: 5; }
   .project-index-identity h3 { text-transform: uppercase; }
   .project-index-identity p { margin-top: var(--space-3); }
   .project-index-identity .project-index-description { margin-top: var(--space-5); max-width: 44ch; }
@@ -26,6 +28,7 @@
   .project-index-facts ul { list-style: none; padding: 0; margin: 0; }
   .project-index-meta .concept-disclosure { margin-top: var(--space-5); }
   .project-index-link { justify-self: start; display: inline-flex; align-items: center; gap: var(--space-3); min-height: 44px; text-decoration: none; text-underline-offset: 0.3em; }
+  .footer-heading .type-display { overflow-wrap: break-word; }
   .project-index-arrow { transition: transform var(--duration-state); }
   .project-index-link:hover, .project-index-link:focus-visible { text-decoration: underline; }
   .project-index-link:hover .project-index-arrow, .project-index-link:focus-visible .project-index-arrow { transform: translate(3px, -3px); }
@@ -65,28 +68,6 @@
   .engagement-scope-intro { margin-bottom: var(--space-5); max-width: 44ch; }
   .engagement-terms { display: grid; grid-template-columns: 1fr; gap: var(--space-5); border-top: 1px solid var(--hairline); padding-top: var(--space-5); }
 
-  .engagement-card { border-top: 1px solid var(--hairline); padding-block: var(--space-7); }
-  .engagement-card-heading { display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: var(--grid-gap); row-gap: var(--space-3); align-items: baseline; }
-  .engagement-card-heading h3 { grid-column: 2; grid-row: 1; min-width: 0; text-transform: uppercase; }
-  .engagement-card-heading .engagement-price { grid-column: 2; grid-row: 2; margin-top: 0; min-width: 0; }
-  .engagement-audience { max-width: 44ch; margin-top: var(--space-5); }
-  .engagement-meta { display: grid; gap: var(--space-5); margin-top: var(--space-6); }
-  .engagement-meta > div { border-top: 1px solid var(--hairline); padding-top: var(--space-5); }
-  .engagement-meta ul { list-style: none; padding: 0; margin: var(--space-3) 0 0; }
-  .engagement-meta li + li { margin-top: var(--space-2); }
-  .engagements-note { margin-top: var(--space-5); max-width: 44ch; }
-  .terms-list { list-style: none; display: grid; gap: var(--space-3); padding: 0; margin: 0; max-width: 68ch; }
-  .section-heading > div, .section-heading > .section-count, .project-details > div, .project-details > dl { grid-column: 1 / -1; min-width: 0; }
-  .project-description, .project-meta dd { overflow-wrap: anywhere; }
-  .footer-heading .type-display { overflow-wrap: break-word; }
-@media (min-width: 48rem) {
-  .engagement-card { padding-block: var(--space-8); }
-  .engagement-card-heading { grid-template-columns: 32px minmax(0, 1fr) auto; }
-  .engagement-card-heading .engagement-price { grid-column: 3; grid-row: 1 / 3; align-self: baseline; justify-self: end; }
-  .engagement-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
-  .engagement-meta > div { min-width: 0; }
-  .engagement-meta > div:nth-child(2), .engagement-meta > p + div { grid-column: 1 / -1; }
-}
 @media (min-width: 48rem) {
   .engagement { padding-block: var(--space-8); }
   .engagement-identity { grid-column: 1 / 4; }
@@ -116,13 +97,14 @@
   .capability ul { grid-column: 3 / -1; margin-top: 0; }
   .project-index-entry { position: relative; }
   .project-index-number { position: absolute; top: var(--space-5); left: 0; }
-  .project-index-primary { display: flex; flex-direction: column; align-items: flex-start; grid-column: 1 / 6; gap: var(--space-5); }
-  .project-index-primary, .project-index-meta { grid-row: 1; }
-  .project-index-meta { grid-column: 6 / -1; }
+  .project-index-media { grid-column: 1 / 6; grid-row: 1; }
+  .project-index-primary { display: flex; flex-direction: column; align-items: flex-start; grid-column: 1 / 6; grid-row: 2; gap: var(--space-5); }
+  .project-index-meta { grid-column: 6 / -1; grid-row: 2; }
 }
 
 @media (min-width: 64rem) {
   .project-index-number { grid-column: 1 / 2; align-self: start; padding-top: var(--space-3); margin-bottom: 0; }
+  .project-index-media { grid-column: 2 / 7; }
   .project-index-primary { grid-column: 2 / 7; }
   .project-index-meta { grid-column: 8 / 11; }
   .approach-label { grid-column: 1 / 5; }

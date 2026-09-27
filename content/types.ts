@@ -47,6 +47,7 @@ export interface SiteContent {
     readonly sector: string;
     readonly year: string;
     readonly viewProject: string;
+    readonly pricePrefix: string;
     readonly conceptWebsite: string;
     readonly websiteEngagements: string;
     readonly typicalTimeline: string;

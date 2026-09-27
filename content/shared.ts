@@ -13,12 +13,12 @@ export const siteFacts = {
 } as const;
 
 export const projects = [
-  { slug: "zera-moda", title: "Zera Moda", year: 2026, status: "concept", demoUrl: "https://zera-moda-demo.vercel.app" },
-  { slug: "erbay-ekinci", title: "Erbay Ekinci", year: 2026, status: "concept", demoUrl: "https://erbay-ekinci-haute-couture.vercel.app" },
+  { slug: "zera-moda", title: "Zera Moda", year: 2026, status: "concept", demoUrl: "https://zera-moda-demo.vercel.app", imageSrc: "/projects/zera-moda/zera-01-desktop.webp", imageWidth: 1600, imageHeight: 1100 },
+  { slug: "erbay-ekinci", title: "Erbay Ekinci", year: 2026, status: "concept", demoUrl: "https://erbay-ekinci-haute-couture.vercel.app", imageSrc: "/projects/erbay-ekinci/erbay-01-desktop.webp", imageWidth: 1600, imageHeight: 1100 },
 ] as const;
 
 export const engagements = [
-  { id: "essential", number: "01", name: "Essential", price: "Starting at ₺19.900", pageRange: "1–3 primary pages/views", revisionRounds: 2, supportDays: 30 },
-  { id: "signature", number: "02", name: "Signature", price: "Starting at ₺34.900", pageRange: "4–8 primary pages/views", revisionRounds: 2, supportDays: 30 },
-  { id: "custom-b2b", number: "03", name: "Custom / B2B", price: "Starting at ₺49.900", pageRange: null, revisionRounds: null, supportDays: null },
+  { id: "essential", number: "01", name: "Essential", price: "₺19.900", pageRange: "1–3 primary pages/views", revisionRounds: 2, supportDays: 30 },
+  { id: "signature", number: "02", name: "Signature", price: "₺34.900", pageRange: "4–8 primary pages/views", revisionRounds: 2, supportDays: 30 },
+  { id: "custom-b2b", number: "03", name: "Custom / B2B", price: "₺49.900", pageRange: null, revisionRounds: null, supportDays: null },
 ] as const;
