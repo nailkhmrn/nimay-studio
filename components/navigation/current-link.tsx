@@ -7,7 +7,7 @@ import type { ComponentProps, MouseEvent } from "react";
 import { CtaLink } from "@/components/ui/cta-link";
 import type { FoundationPath } from "@/content/models";
 
-type CurrentLinkHref = FoundationPath | "/#selected-work" | "/#studio-statement" | "/#contact";
+type CurrentLinkHref = FoundationPath | "/#selected-work" | "/#engagements" | "/#studio-statement" | "/#contact";
 
 type CurrentLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
   href: CurrentLinkHref;

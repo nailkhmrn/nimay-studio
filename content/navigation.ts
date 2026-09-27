@@ -1,6 +1,6 @@
 import type { NavigationItem } from "./models";
 
-type NavigationHref = NavigationItem["href"] | "/#selected-work" | "/#studio-statement" | "/#contact";
+type NavigationHref = NavigationItem["href"] | "/#selected-work" | "/#engagements" | "/#studio-statement" | "/#contact";
 type HomepageNavigationItem = Omit<NavigationItem, "href"> & { readonly href: NavigationHref };
 
 const contact = { label: "Contact", href: "/#contact" } as const satisfies Omit<NavigationItem, "href"> & { readonly href: NavigationHref };
@@ -8,6 +8,7 @@ const contact = { label: "Contact", href: "/#contact" } as const satisfies Omit<
 export const navigation = [
   { label: "Home", href: "/" },
   { label: "Work", href: "/#selected-work" },
+  { label: "Engagements", href: "/#engagements" },
   { label: "Studio", href: "/#studio-statement" },
   contact,
 ] as const satisfies readonly HomepageNavigationItem[];
