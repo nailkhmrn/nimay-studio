@@ -4,7 +4,7 @@ export interface StudioSocial {
 }
 
 export const studioContact = {
-  email: "hello@nimay.studio",
+  email: "hello@nimaystudio.com",
   socials: [] as readonly StudioSocial[], // Awaiting confirmed profile URLs.
 };
 

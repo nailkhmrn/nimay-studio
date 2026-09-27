@@ -60,7 +60,7 @@ export default function PrivacyPage() {
         <section className="privacy-contact" aria-labelledby="privacy-contact-title">
           <p className="type-label">Contact</p>
           <h2 id="privacy-contact-title" className="type-h2">Questions about privacy?</h2>
-          <a className="text-link type-body" href="mailto:hello@nimay.studio">hello@nimay.studio</a>
+          <a className="text-link type-body" href="mailto:hello@nimaystudio.com">hello@nimaystudio.com</a>
         </section>
       </Container>
     </Section>
