@@ -4,17 +4,18 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/layout/container";
+import { LocaleSwitcher } from "@/components/navigation/locale-switcher";
 import { CurrentLink } from "./current-link";
-import { primaryNavigation } from "@/content/navigation";
+import type { NavigationItem } from "@/content/navigation";
+import type { Locale, SiteContent } from "@/content/types";
 
-export function MobileNavigation() {
+export function MobileNavigation({ locale, content, navigation }: { locale: Locale; content: SiteContent; navigation: readonly NavigationItem[] }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  // Route changes can also come from history or navigation outside this menu.
   useEffect(() => {
     dialogRef.current?.close();
   }, [pathname]);
@@ -23,7 +24,6 @@ export function MobileNavigation() {
     const desktop = window.matchMedia("(min-width: 64rem)");
     const close = () => dialogRef.current?.close();
     const onBreakpointChange = () => { if (desktop.matches) close(); };
-
     desktop.addEventListener("change", onBreakpointChange);
     window.addEventListener("popstate", close);
     window.addEventListener("pagehide", close);
@@ -44,27 +44,23 @@ export function MobileNavigation() {
 
   function handleClose() {
     setIsOpen(false);
-    // The trigger disappears at the desktop breakpoint; use the home link then.
-    const target = triggerRef.current?.getClientRects().length
-      ? triggerRef.current
-      : document.getElementById("site-home-link");
+    const target = triggerRef.current?.getClientRects().length ? triggerRef.current : document.getElementById("site-home-link");
     target?.focus({ preventScroll: true });
   }
 
   return (
     <div className="mobile-navigation">
-      <button ref={triggerRef} type="button" className="menu-control" aria-haspopup="dialog" aria-expanded={isOpen} aria-controls={isOpen ? "mobile-menu" : undefined} onClick={() => setIsOpen(true)}>Menu</button>
-      {/* Keep dialog focusing outside the sticky header's scroll ancestors. */}
+      <button ref={triggerRef} type="button" className="menu-control" aria-haspopup="dialog" aria-expanded={isOpen} aria-controls={isOpen ? "mobile-menu" : undefined} onClick={() => setIsOpen(true)}>{content.labels.menu}</button>
       {isOpen && createPortal(<dialog ref={mountDialog} id="mobile-menu" className="mobile-menu" aria-labelledby="mobile-menu-title" onClose={handleClose}>
         <Container className="mobile-menu-layout">
           <div className="mobile-menu-top">
             <span className="wordmark" aria-hidden="true">NIMAY</span>
-            <h2 id="mobile-menu-title" className="sr-only">Navigation</h2>
-            <button ref={closeRef} type="button" className="menu-control" aria-label="Close menu" onClick={() => dialogRef.current?.close()}>Close</button>
+            <h2 id="mobile-menu-title" className="sr-only">{content.labels.mobileNavigation}</h2>
+            <button ref={closeRef} type="button" className="menu-control" aria-label={content.labels.close} onClick={() => dialogRef.current?.close()}>{content.labels.close}</button>
           </div>
-          <nav aria-label="Mobile navigation" className="mobile-menu-nav">
+          <nav aria-label={content.labels.mobileNavigation} className="mobile-menu-nav">
             <ul>
-              {primaryNavigation.map((item) => (
+              {navigation.map((item) => (
                 <li key={item.href}>
                   <CurrentLink href={item.href} className="nav-link mobile-menu-link" onClick={(event) => {
                     if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) dialogRef.current?.close();
@@ -73,9 +69,12 @@ export function MobileNavigation() {
               ))}
             </ul>
           </nav>
+          <div className="mobile-menu-tools">
+            <LocaleSwitcher locale={locale} ariaLabel={content.labels.language} />
+          </div>
           <div className="mobile-menu-bottom">
             <p className="type-small">NIMAY Studio</p>
-            <p className="type-small text-muted">Independent Digital Studio</p>
+            <p className="type-small text-muted">{content.labels.footerStudioDescriptor}</p>
           </div>
         </Container>
       </dialog>, document.body)}

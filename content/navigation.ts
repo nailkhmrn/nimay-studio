@@ -1,18 +1,15 @@
-import type { NavigationItem } from "./models";
+import type { Locale, SiteContent } from "./types";
 
-type NavigationHref = NavigationItem["href"] | "/#selected-work" | "/#engagements" | "/#studio-statement" | "/#contact";
-type HomepageNavigationItem = Omit<NavigationItem, "href"> & { readonly href: NavigationHref };
+export interface NavigationItem {
+  readonly label: string;
+  readonly href: string;
+}
 
-const contact = { label: "Contact", href: "/#contact" } as const satisfies Omit<NavigationItem, "href"> & { readonly href: NavigationHref };
-
-export const navigation = [
-  { label: "Home", href: "/" },
-  { label: "Work", href: "/#selected-work" },
-  { label: "Engagements", href: "/#engagements" },
-  { label: "Studio", href: "/#studio-statement" },
-  contact,
-] as const satisfies readonly HomepageNavigationItem[];
-
-export const primaryNavigation = navigation.filter((item) => item.href !== "/");
-export const headerNavigation = primaryNavigation;
-export const contactCta = { label: "Let’s talk", href: contact.href } as const;
+export function getNavigation(locale: Locale, labels: SiteContent["labels"]): readonly NavigationItem[] {
+  return [
+    { label: labels.work, href: `/${locale}#selected-work` },
+    { label: labels.engagements, href: `/${locale}#engagements` },
+    { label: labels.studio, href: `/${locale}#studio-statement` },
+    { label: labels.contact, href: `/${locale}#contact` },
+  ];
+}

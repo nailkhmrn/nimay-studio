@@ -1,35 +1,23 @@
-import { Container } from "./container";
-import { Grid } from "./grid";
-import { CurrentLink } from "@/components/navigation/current-link";
-import { AnalyticsPreferencesButton } from "@/components/analytics/analytics-consent";
-import { CopyEmail } from "@/components/ui/copy-email";
-import { studioContact } from "@/content/studio";
 import Link from "next/link";
+import { AnalyticsPreferencesButton } from "@/components/analytics/analytics-consent";
+import { Container } from "./container";
+import { CopyEmail } from "@/components/ui/copy-email";
+import { siteFacts } from "@/content/shared";
+import type { Locale, SiteContent } from "@/content/types";
 
-export function SiteFooter() {
+export function SiteFooter({ locale, content }: { locale: Locale; content: SiteContent }) {
   return (
-    <footer className="site-footer contact-footer" id="contact">
+    <footer id="contact" className="site-footer" aria-labelledby="contact-title">
       <Container>
-        <Grid className="contact-grid">
-          <h2 className="type-h2">Planning a new identity or website?</h2>
-          <div className="contact-details">
-            <p className="type-body contact-guidance">Tell us about your business, your current website if you have one, what the new site needs to achieve and your preferred timeline. We’ll reply with the next steps and any questions needed to define the scope.</p>
-            <div className="contact-actions">
-              <a href={`mailto:${studioContact.email}?subject=New%20project%20enquiry`} className="contact-email type-project">{studioContact.email}</a>
-              <CopyEmail />
-            </div>
-            {studioContact.socials.length > 0 && <ul className="contact-socials">{studioContact.socials.map((social) => <li key={social.label}><a className="text-link" href={social.href}>{social.label}</a></li>)}</ul>}
-            <p className="type-label contact-location">Based in Türkiye · Working worldwide</p>
-          </div>
-        </Grid>
-        <div className="contact-bottom">
-          <CurrentLink href="/" className="wordmark brand-link" aria-label="NIMAY — Home">NIMAY</CurrentLink>
-          <div className="footer-privacy-controls">
-            <Link className="footer-privacy-link type-label" href="/privacy">Privacy</Link>
-            <AnalyticsPreferencesButton />
-          </div>
-          <p className="type-label">© 2026</p>
+        <div className="footer-heading">
+          <p className="type-label">{content.labels.contact}</p>
+          <h2 id="contact-title" className="type-display">{content.contact.heading}</h2>
         </div>
+        <div className="footer-contact-grid">
+          <div><p className="type-body text-muted footer-guidance">{content.contact.guidance}</p><p className="type-label footer-location">{content.contact.location}</p></div>
+          <div className="footer-email"><a className="type-h2" href={`mailto:${siteFacts.email}?subject=${encodeURIComponent("NIMAY enquiry")}`}>{siteFacts.email}</a><CopyEmail email={siteFacts.email} labels={content.labels} /></div>
+        </div>
+        <div className="footer-bottom"><div><span className="type-label">NIMAY</span><span className="type-label text-muted"> — {content.labels.footerStudioDescriptor}</span></div><div className="footer-legal"><Link className="type-label" href={`/${locale}/privacy`}>{content.labels.privacy}</Link><AnalyticsPreferencesButton label={content.labels.privacyPreferences} /></div></div>
       </Container>
     </footer>
   );

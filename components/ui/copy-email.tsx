@@ -1,31 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import type { SiteContent } from "@/content/types";
 
-const email = "hello@nimaystudio.com";
-
-export function CopyEmail() {
+export function CopyEmail({ email, labels }: { email: string; labels: Pick<SiteContent["labels"], "copyEmail" | "emailCopied"> }) {
   const [copied, setCopied] = useState(false);
-  const timeoutRef = useRef<number>(0);
-
-  useEffect(() => () => {
-    window.clearTimeout(timeoutRef.current);
-  }, []);
-
-  async function handleCopy() {
-    try {
-      await navigator.clipboard.writeText(email);
-      setCopied(true);
-      window.clearTimeout(timeoutRef.current);
-      timeoutRef.current = window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
-    }
+  async function copyEmail() {
+    try { await navigator.clipboard.writeText(email); setCopied(true); window.setTimeout(() => setCopied(false), 1800); } catch { window.location.href = `mailto:${email}`; }
   }
-
-  return (
-    <button type="button" className="contact-copy-button type-label" onClick={handleCopy} aria-label={copied ? "Email copied" : "Copy email"}>
-      {copied ? "Email copied" : "Copy email"}
-    </button>
-  );
+  return <button className="copy-email" type="button" onClick={copyEmail}>{copied ? labels.emailCopied : labels.copyEmail}</button>;
 }

@@ -65,6 +65,28 @@
   .engagement-scope-intro { margin-bottom: var(--space-5); max-width: 44ch; }
   .engagement-terms { display: grid; grid-template-columns: 1fr; gap: var(--space-5); border-top: 1px solid var(--hairline); padding-top: var(--space-5); }
 
+  .engagement-card { border-top: 1px solid var(--hairline); padding-block: var(--space-7); }
+  .engagement-card-heading { display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: var(--grid-gap); row-gap: var(--space-3); align-items: baseline; }
+  .engagement-card-heading h3 { grid-column: 2; grid-row: 1; min-width: 0; text-transform: uppercase; }
+  .engagement-card-heading .engagement-price { grid-column: 2; grid-row: 2; margin-top: 0; min-width: 0; }
+  .engagement-audience { max-width: 44ch; margin-top: var(--space-5); }
+  .engagement-meta { display: grid; gap: var(--space-5); margin-top: var(--space-6); }
+  .engagement-meta > div { border-top: 1px solid var(--hairline); padding-top: var(--space-5); }
+  .engagement-meta ul { list-style: none; padding: 0; margin: var(--space-3) 0 0; }
+  .engagement-meta li + li { margin-top: var(--space-2); }
+  .engagements-note { margin-top: var(--space-5); max-width: 44ch; }
+  .terms-list { list-style: none; display: grid; gap: var(--space-3); padding: 0; margin: 0; max-width: 68ch; }
+  .section-heading > div, .section-heading > .section-count, .project-details > div, .project-details > dl { grid-column: 1 / -1; min-width: 0; }
+  .project-description, .project-meta dd { overflow-wrap: anywhere; }
+  .footer-heading .type-display { overflow-wrap: break-word; }
+@media (min-width: 48rem) {
+  .engagement-card { padding-block: var(--space-8); }
+  .engagement-card-heading { grid-template-columns: 32px minmax(0, 1fr) auto; }
+  .engagement-card-heading .engagement-price { grid-column: 3; grid-row: 1 / 3; align-self: baseline; justify-self: end; }
+  .engagement-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .engagement-meta > div { min-width: 0; }
+  .engagement-meta > div:nth-child(2), .engagement-meta > p + div { grid-column: 1 / -1; }
+}
 @media (min-width: 48rem) {
   .engagement { padding-block: var(--space-8); }
   .engagement-identity { grid-column: 1 / 4; }

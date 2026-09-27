@@ -1,31 +1,18 @@
+import Image from "next/image";
 import { Grid } from "@/components/layout/grid";
-import type { HomepageProject } from "@/content/models";
+import { CtaLink } from "@/components/ui/cta-link";
+import type { SiteContent } from "@/content/types";
+import type { projects } from "@/content/shared";
 
-export function FeaturedProject({ project, number }: { project: HomepageProject; number: "01" | "02" }) {
-  return (
-    <article className="project-index-entry" aria-labelledby={`${project.slug}-title`}>
-      <Grid className="project-index-grid">
-        <span className="project-index-number type-label text-muted">{number}</span>
-        <div className="project-index-primary">
-          <div className="project-index-identity">
-            <h3 id={`${project.slug}-title`} className="type-project" lang="tr">{project.title}</h3>
-            <p className="type-body">{project.projectType}</p>
-            <p className="project-index-description type-body text-muted">{project.description}</p>
-          </div>
-          <a className="project-index-link type-small" href={project.demoUrl} target="_blank" rel="noopener noreferrer"
-            aria-label={`View ${project.title} concept website (opens in a new tab)`}>
-            <span>View Project</span><span className="project-index-arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-        <div className="project-index-meta type-small text-muted">
-          <dl className="project-index-facts">
-            <div><dt className="type-label">Services</dt><dd><ul>{project.services.map(service => <li key={service}>{service}</li>)}</ul></dd></div>
-            <div><dt className="type-label">Sector</dt><dd>{project.industry}</dd></div>
-            <div><dt className="type-label">Year</dt><dd>{project.year}</dd></div>
-          </dl>
-          <p className="concept-disclosure">Concept Website</p>
-        </div>
-      </Grid>
-    </article>
-  );
+type SharedProject = (typeof projects)[number];
+
+export function FeaturedProject({ project, content }: { project: SharedProject; content: SiteContent }) {
+  const localized = content.projects[project.slug]!;
+  return <article className="featured-project">
+    <div className="project-image-wrap"><Image className="project-image" src={`/projects/${project.slug}.webp`} alt={`${project.title} — ${localized.projectType}`} width={1600} height={1100} sizes="(min-width: 64rem) 58vw, 100vw" /><span className="project-status type-label">{content.labels.conceptWebsite}</span></div>
+    <Grid className="project-details">
+      <div><p className="type-label">{localized.projectType}</p><h2 className="type-h2">{project.title}</h2><p className="type-body text-muted project-description">{localized.description}</p><CtaLink href={project.demoUrl} target="_blank" rel="noreferrer" aria-label={`${content.labels.viewProjectAria} — ${project.title}`}>{content.labels.viewProject}</CtaLink></div>
+      <dl className="project-meta type-label"><div><dt>{content.labels.services}</dt><dd>{localized.services.join(" / ")}</dd></div><div><dt>{content.labels.sector}</dt><dd>{localized.industry}</dd></div><div><dt>{content.labels.year}</dt><dd>{project.year}</dd></div></dl>
+    </Grid>
+  </article>;
 }
