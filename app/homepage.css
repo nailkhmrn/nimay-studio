@@ -6,6 +6,7 @@
   .hero-location { margin-top: var(--space-6); align-self: end; }
   .selected-work { padding-top: 0; padding-bottom: 0; }
   .work-index { display: flex; justify-content: space-between; padding-block: var(--space-5); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .work-framing { max-width: 52ch; margin-top: var(--space-5); }
   .project-index-entry { padding-block: var(--section-space); }
   .project-index-entry + .project-index-entry { border-top: 1px solid var(--hairline); }
   .project-index-grid { align-items: start; row-gap: var(--space-5); }
@@ -44,6 +45,44 @@
   .capability { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline; border-top: 1px solid var(--hairline); padding-block: var(--space-5); }
   .capability h3 { grid-column: 1 / -1; margin: 0; text-transform: uppercase; }
   .capability ul { grid-column: 1 / -1; display: flex; flex-wrap: wrap; column-gap: var(--space-5); row-gap: var(--space-2); padding: 0; margin: var(--space-3) 0 0; list-style: none; color: var(--secondary); }
+}
+.engagements { border-top: 1px solid var(--hairline); }
+.engagements-heading { margin-bottom: var(--space-7); }
+.engagements-label, .engagements-heading h2 { grid-column: 1 / -1; }
+.engagement-list { list-style: none; padding: 0; margin: 0; }
+.engagement { border-top: 1px solid var(--hairline); padding-block: var(--space-7); }
+.engagement-grid { align-items: start; row-gap: var(--space-5); }
+.engagement-identity, .engagement-price, .engagement-audience, .engagement-timeline, .engagement-scope { grid-column: 1 / -1; }
+.engagement-identity { display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: var(--grid-gap); align-items: baseline; }
+.engagement-identity h3 { text-transform: uppercase; }
+.engagement-price { margin-top: calc(var(--space-5) * -1); }
+.engagement-timeline, .engagement-scope { border-top: 1px solid var(--hairline); padding-top: var(--space-5); }
+.engagement-timeline p + p { margin-top: var(--space-2); }
+  .engagement-scope ul, .engagement-terms ul { list-style: none; padding: 0; margin: var(--space-3) 0 0; }
+  .engagement-scope li + li { margin-top: var(--space-2); }
+  .engagement-terms ul { display: grid; gap: var(--space-3); margin-top: 0; max-width: 68ch; }
+  .engagement-note { margin-top: var(--space-5); max-width: 44ch; }
+  .engagement-scope-intro { margin-bottom: var(--space-5); max-width: 44ch; }
+  .engagement-terms { display: grid; grid-template-columns: 1fr; gap: var(--space-5); border-top: 1px solid var(--hairline); padding-top: var(--space-5); }
+
+@media (min-width: 48rem) {
+  .engagement { padding-block: var(--space-8); }
+  .engagement-identity { grid-column: 1 / 4; }
+  .engagement-price { grid-column: 4 / -1; margin-top: 0; }
+  .engagement-audience { grid-column: 1 / 5; }
+  .engagement-timeline { grid-column: 5 / -1; }
+  .engagement-scope { grid-column: 3 / -1; }
+  .engagement-terms { grid-template-columns: 2fr 6fr; column-gap: var(--grid-gap); }
+}
+
+@media (min-width: 64rem) {
+  .engagement { padding-block: var(--space-9); }
+  .engagement-identity { grid-column: 1 / 5; }
+  .engagement-price { grid-column: 5 / 7; }
+  .engagement-audience { grid-column: 5 / 7; }
+  .engagement-timeline { grid-column: 7 / 9; border-top: 0; padding-top: 0; }
+  .engagement-scope { grid-column: 9 / -1; border-top: 0; padding-top: 0; }
+  .engagement-terms { grid-template-columns: 4fr 8fr; }
 }
 
 @media (min-width: 48rem) {

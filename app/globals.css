@@ -150,6 +150,7 @@
   .contact-grid > h2, .contact-details { grid-column: 1 / -1; }
   .contact-grid > h2 { text-transform: uppercase; letter-spacing: -0.025em; }
   .contact-details { margin-top: var(--space-6); }
+.contact-guidance { max-width: 44ch; margin-bottom: var(--space-5); color: rgb(243 240 232 / 78%); }
   .contact-email { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; text-underline-offset: 0.15em; overflow-wrap: anywhere; }
   .contact-email:hover { text-decoration: underline; }
   .contact-socials { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-5); }

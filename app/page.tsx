@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Hero } from "@/components/sections/hero";
 import { Approach } from "@/components/sections/approach";
+import { Engagements } from "@/components/sections/engagements";
 import { FeaturedProject } from "@/components/projects/featured-project";
 import { StudioStatement, Capabilities } from "@/components/sections/studio-story";
 import { selectedProjects } from "@/content/selected-projects";
@@ -43,9 +44,11 @@ export default function HomePage() {
       <Section id="selected-work" className="selected-work" aria-labelledby="work-title">
         <Container>
           <div className="work-index"><h2 id="work-title" className="type-label">Selected Work</h2><span className="type-label">01—02</span></div>
+          <p className="work-framing type-small text-muted">Independent concept studies demonstrating our approach to digital direction, design and development.</p>
           {selectedProjects.map((project, index) => <FeaturedProject key={project.slug} project={project} number={index === 0 ? "01" : "02"} />)}
         </Container>
       </Section>
+      <Engagements />
       <Approach />
       <StudioStatement />
       <Capabilities />
