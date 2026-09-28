@@ -34,6 +34,8 @@ export interface SiteContent {
     readonly studio: string;
     readonly contact: string;
     readonly language: string;
+    readonly darkAction: string;
+    readonly lightAction: string;
     readonly menu: string;
     readonly close: string;
     readonly navigation: string;

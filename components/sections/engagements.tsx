@@ -22,7 +22,7 @@ export function Engagements({ content, facts }: { content: SiteContent; facts: r
                     <span className="type-label text-muted engagement-number">{fact.number}</span>
                     <h3 className="type-h2">{fact.name}</h3>
                   </div>
-                  <p className="type-h3 engagement-price">{content.labels.pricePrefix} {fact.price}</p>
+                  <p className="type-h3 engagement-price"><span className="type-label engagement-price-label">{content.labels.pricePrefix}</span>{" "}<span className="engagement-price-amount">{fact.price}</span></p>
                   <p className="type-body text-muted engagement-audience">{item.audience}</p>
                   <div className="engagement-timeline">
                     <p className="type-label">{content.labels.typicalTimeline}</p>

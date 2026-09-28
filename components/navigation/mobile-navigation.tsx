@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Container } from "@/components/layout/container";
 import { LocaleSwitcher } from "@/components/navigation/locale-switcher";
 import { CurrentLink } from "./current-link";
+import { ThemeControl } from "@/components/theme/theme-control";
 import type { NavigationItem } from "@/content/navigation";
 import type { Locale, SiteContent } from "@/content/types";
 
@@ -71,6 +72,7 @@ export function MobileNavigation({ locale, content, navigation }: { locale: Loca
           </nav>
           <div className="mobile-menu-tools">
             <LocaleSwitcher locale={locale} ariaLabel={content.labels.language} />
+            <ThemeControl labels={content.labels} />
           </div>
           <div className="mobile-menu-bottom">
             <p className="type-small">NIMAY Studio</p>

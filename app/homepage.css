@@ -54,11 +54,13 @@
 .engagements-label, .engagements-heading h2 { grid-column: 1 / -1; }
 .engagement-list { list-style: none; padding: 0; margin: 0; }
 .engagement { border-top: 1px solid var(--hairline); padding-block: var(--space-7); }
-.engagement-grid { align-items: start; row-gap: var(--space-5); }
+.engagement-grid { align-items: start; row-gap: var(--space-6); }
 .engagement-identity, .engagement-price, .engagement-audience, .engagement-timeline, .engagement-scope { grid-column: 1 / -1; }
 .engagement-identity { display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: var(--grid-gap); align-items: baseline; }
 .engagement-identity h3 { text-transform: uppercase; }
-.engagement-price { margin-top: calc(var(--space-5) * -1); }
+.engagement-price { display: grid; gap: var(--space-1); margin-top: 0; }
+.engagement-price-label { display: block; color: var(--secondary); }
+.engagement-price-amount { display: block; font-size: var(--type-h3); line-height: 1.1; }
 .engagement-timeline, .engagement-scope { border-top: 1px solid var(--hairline); padding-top: var(--space-5); }
 .engagement-timeline p + p { margin-top: var(--space-2); }
   .engagement-scope ul, .engagement-terms ul { list-style: none; padding: 0; margin: var(--space-3) 0 0; }
@@ -70,6 +72,10 @@
 
 @media (min-width: 48rem) {
   .engagement { padding-block: var(--space-8); }
+  .engagement-grid { row-gap: var(--space-5); }
+  .engagement-price { display: block; }
+  .engagement-price-label, .engagement-price-amount { display: inline; font-size: inherit; line-height: inherit; }
+  .engagement-price-amount { margin-left: var(--space-1); }
   .engagement-identity { grid-column: 1 / 4; }
   .engagement-price { grid-column: 4 / -1; margin-top: 0; }
   .engagement-audience { grid-column: 1 / 5; }

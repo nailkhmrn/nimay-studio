@@ -2,6 +2,7 @@ import { Container } from "./container";
 import { CurrentLink } from "@/components/navigation/current-link";
 import { LocaleSwitcher } from "@/components/navigation/locale-switcher";
 import { MobileNavigation } from "@/components/navigation/mobile-navigation";
+import { ThemeControl } from "@/components/theme/theme-control";
 import { getNavigation } from "@/content/navigation";
 import type { Locale, SiteContent } from "@/content/types";
 
@@ -18,6 +19,7 @@ export function SiteHeader({ locale, content }: { locale: Locale; content: SiteC
             </ul>
           </nav>
           <LocaleSwitcher locale={locale} ariaLabel={content.labels.language} />
+          <ThemeControl labels={content.labels} />
         </div>
         <MobileNavigation locale={locale} content={content} navigation={navigation} />
       </Container>
