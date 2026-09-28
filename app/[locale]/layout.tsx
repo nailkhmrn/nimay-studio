@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { Geist, Instrument_Serif } from "next/font/google";
 import { notFound } from "next/navigation";
 import { AnalyticsConsent } from "@/components/analytics/analytics-consent";
+import Script from "next/script";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import { ThemeInitScript } from "@/components/theme/theme-init-script";
 import { getSiteContent, isLocale, locales } from "@/lib/i18n";
 import "../globals.css";
 
@@ -48,7 +48,7 @@ export default async function LocaleLayout({ children, params }: Readonly<{ chil
   const content = getSiteContent(locale);
   return (
     <html lang={locale} suppressHydrationWarning className={`${geist.variable} ${instrument.variable}`}>
-      <head><ThemeInitScript /></head>
+      <head><Script id="nimay-theme-init" src="/nimay-theme-init.js" strategy="beforeInteractive" /></head>
       <body className="site-shell">
         <a className="skip-link" href="#main-content">{content.labels.skipToContent}</a>
         <SiteHeader locale={locale} content={content} />
