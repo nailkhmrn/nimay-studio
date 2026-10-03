@@ -1,19 +1,37 @@
 import { Suspense } from "react";
-import type { Metadata } from "next";
-import { Geist, Instrument_Serif } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import { AnalyticsConsent } from "@/components/analytics/analytics-consent";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getSiteContent, isLocale, locales } from "@/lib/i18n";
+import { THEME_COOKIE_KEY, parseTheme, themeColors } from "@/lib/theme";
 import "../globals.css";
 
-const geist = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-geist", display: "swap" });
-const instrument = Instrument_Serif({ weight: "400", style: ["normal", "italic"], subsets: ["latin", "latin-ext"], variable: "--font-instrument", display: "swap" });
+// Variable fonts: Bricolage covers 400–800 with optical sizing; JetBrains Mono ships 400 and 500.
+const bricolage = Bricolage_Grotesque({ subsets: ["latin", "latin-ext"], axes: ["opsz"], variable: "--font-bricolage", display: "swap" });
+const jetbrains = JetBrains_Mono({ subsets: ["latin", "latin-ext"], weight: ["400", "500"], variable: "--font-jetbrains", display: "swap" });
+
+async function getThemePreference() {
+  return parseTheme((await cookies()).get(THEME_COOKIE_KEY)?.value);
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateViewport(): Promise<Viewport> {
+  const theme = await getThemePreference();
+  if (theme) return { themeColor: themeColors[theme], colorScheme: theme };
+  return {
+    themeColor: [
+      { media: "(prefers-color-scheme: light)", color: themeColors.light },
+      { media: "(prefers-color-scheme: dark)", color: themeColors.dark },
+    ],
+    colorScheme: "light dark",
+  };
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -46,10 +64,9 @@ export default async function LocaleLayout({ children, params }: Readonly<{ chil
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const content = getSiteContent(locale);
-  const themeCookie = (await cookies()).get("nimay-theme-v1")?.value;
-  const theme = themeCookie === "light" || themeCookie === "dark" ? themeCookie : undefined;
+  const theme = await getThemePreference();
   return (
-    <html lang={locale} data-theme={theme} className={`${geist.variable} ${instrument.variable}`}>
+    <html lang={locale} data-theme={theme} className={`${bricolage.variable} ${jetbrains.variable}`}>
       <body className="site-shell">
         <a className="skip-link" href="#main-content">{content.labels.skipToContent}</a>
         <SiteHeader locale={locale} content={content} />
@@ -60,4 +77,3 @@ export default async function LocaleLayout({ children, params }: Readonly<{ chil
     </html>
   );
 }
-

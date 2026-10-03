@@ -22,7 +22,8 @@ export function MobileNavigation({ locale, content, navigation }: { locale: Loca
   }, [pathname]);
 
   useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 64rem)");
+    // Matches the 40rem breakpoint in globals.css where the full header navigation returns.
+    const desktop = window.matchMedia("(min-width: 40.0625rem)");
     const close = () => dialogRef.current?.close();
     const onBreakpointChange = () => { if (desktop.matches) close(); };
     desktop.addEventListener("change", onBreakpointChange);
@@ -51,19 +52,19 @@ export function MobileNavigation({ locale, content, navigation }: { locale: Loca
 
   return (
     <div className="mobile-navigation">
-      <button ref={triggerRef} type="button" className="menu-control" aria-haspopup="dialog" aria-expanded={isOpen} aria-controls={isOpen ? "mobile-menu" : undefined} onClick={() => setIsOpen(true)}>{content.labels.menu}</button>
+      <button ref={triggerRef} type="button" className="menu-control menu-control--icon pill" aria-haspopup="dialog" aria-expanded={isOpen} aria-controls={isOpen ? "mobile-menu" : undefined} onClick={() => setIsOpen(true)}><span className="menu-icon" aria-hidden="true" /><span className="sr-only">{content.labels.menu}</span></button>
       {isOpen && createPortal(<dialog ref={mountDialog} id="mobile-menu" className="mobile-menu" aria-labelledby="mobile-menu-title" onClose={handleClose}>
         <Container className="mobile-menu-layout">
           <div className="mobile-menu-top">
-            <span className="wordmark" aria-hidden="true">NIMAY</span>
+            <span className="wordmark" aria-hidden="true">NIMAY<span className="wordmark-mark">®</span></span>
             <h2 id="mobile-menu-title" className="sr-only">{content.labels.mobileNavigation}</h2>
-            <button ref={closeRef} type="button" className="menu-control" aria-label={content.labels.close} onClick={() => dialogRef.current?.close()}>{content.labels.close}</button>
+            <button ref={closeRef} type="button" className="menu-control pill" aria-label={content.labels.close} onClick={() => dialogRef.current?.close()}>{content.labels.close}</button>
           </div>
           <nav aria-label={content.labels.mobileNavigation} className="mobile-menu-nav">
             <ul>
               {navigation.map((item) => (
                 <li key={item.href}>
-                  <CurrentLink href={item.href} className="nav-link mobile-menu-link" onClick={(event) => {
+                  <CurrentLink href={item.href} className="mobile-menu-link" onClick={(event) => {
                     if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) dialogRef.current?.close();
                   }}>{item.label}</CurrentLink>
                 </li>
@@ -75,8 +76,8 @@ export function MobileNavigation({ locale, content, navigation }: { locale: Loca
             <ThemeControl labels={content.labels} />
           </div>
           <div className="mobile-menu-bottom">
-            <p className="type-small">NIMAY Studio</p>
-            <p className="type-small text-muted">{content.labels.footerStudioDescriptor}</p>
+            <p className="type-label">NIMAY®</p>
+            <p className="type-label text-muted">{content.labels.footerStudioDescriptor}</p>
           </div>
         </Container>
       </dialog>, document.body)}

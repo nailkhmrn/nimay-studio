@@ -1,14 +1,14 @@
 @layer components {
   .privacy-page { min-height: 60svh; }
-  .privacy-heading { display: grid; gap: var(--space-5); padding-bottom: var(--space-8); border-bottom: 1px solid var(--hairline); }
+  .privacy-heading { display: grid; gap: var(--space-5); padding-bottom: var(--space-8); border-bottom: var(--border) solid var(--line); }
   .privacy-heading h1 { max-width: 18ch; }
   .privacy-heading > p:last-child { margin-top: var(--space-2); }
   .privacy-sections { max-width: 72rem; }
-  .privacy-entry { display: grid; grid-template-columns: 2rem minmax(0, 1fr); column-gap: var(--grid-gap); row-gap: var(--space-4); padding-block: var(--space-6); border-bottom: 1px solid var(--hairline); }
+  .privacy-entry { display: grid; grid-template-columns: 2rem minmax(0, 1fr); column-gap: var(--grid-gap); row-gap: var(--space-4); padding-block: var(--space-6); border-bottom: var(--border) solid var(--line); }
   .privacy-number { padding-top: 0.2em; }
   .privacy-entry h2, .privacy-copy { grid-column: 2; }
-  .privacy-copy { display: grid; gap: var(--space-4); max-width: 66ch; color: var(--secondary); }
-  .privacy-contact { display: grid; justify-items: start; gap: var(--space-4); margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--hairline); }
+  .privacy-copy { display: grid; gap: var(--space-4); max-width: 66ch; color: var(--muted); }
+  .privacy-contact { display: grid; justify-items: start; gap: var(--space-4); margin-top: var(--space-8); padding-top: var(--space-6); border-top: var(--border) solid var(--line); }
   .privacy-contact a { display: inline-flex; align-items: center; min-height: 44px; }
 }
 

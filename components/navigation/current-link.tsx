@@ -4,11 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
 import type { ComponentProps, MouseEvent } from "react";
-import { CtaLink } from "@/components/ui/cta-link";
 
 type CurrentLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
   href: string;
-  appearance?: "text" | "cta";
 };
 
 const hashSubscribers = new Set<() => void>();
@@ -50,7 +48,7 @@ function getServerHashSnapshot() {
 }
 
 // A small client leaf keeps route state out of the server-rendered shell.
-export function CurrentLink({ href, appearance = "text", ...props }: CurrentLinkProps) {
+export function CurrentLink({ href, ...props }: CurrentLinkProps) {
   const pathname = usePathname();
   const hash = useSyncExternalStore(subscribeToHash, getHashSnapshot, getServerHashSnapshot);
   const [pagePath, fragment] = href.split("#");
@@ -59,7 +57,6 @@ export function CurrentLink({ href, appearance = "text", ...props }: CurrentLink
   const isActive = hasFragment
     ? pathname === pagePath && hash === `#${fragment}`
     : isPage || pathname.startsWith(`${href}/`);
-  const Component = appearance === "cta" ? CtaLink : Link;
   const onClick = props.onClick;
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
@@ -70,7 +67,7 @@ export function CurrentLink({ href, appearance = "text", ...props }: CurrentLink
   }
 
   return (
-    <Component
+    <Link
       {...props}
       href={href}
       onClick={handleClick}

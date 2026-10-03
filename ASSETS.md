@@ -1,6 +1,6 @@
 # Project assets
 
-Six optimized WebP captures are retained under `public/projects/` for a future portfolio or case-study phase. The current homepage uses a typographic Selected Work index and does not render or request these images.
+Six optimized WebP captures live under `public/projects/`. The homepage renders the captures of projects marked `visible` in `content/shared.ts` (currently Zera Moda only); Erbay Ekinci captures stay unused while that project is hidden.
 
 | Project | Retained files |
 | --- | --- |
