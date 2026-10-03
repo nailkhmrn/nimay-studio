@@ -24,7 +24,7 @@ export const tr = {
     stages: [{ label: "01 / Taslak", caption: "Yön Belirleme" }, { label: "02 / Tasarım", caption: "Görsel sistem" }, { label: "03 / Yayında ●", caption: "Geliştirme" }],
     liveImageAlt: "Zera Moda konseptinin yayındaki ana sayfası",
   },
-  selectedWork: { framing: "Tasarım ve geliştirme yaklaşımımı gösteren bağımsız konsept çalışmaları. Gerçek müşteri projesi değildir." },
+  selectedWork: { framing: "Tasarım ve geliştirme yaklaşımımı gösteren bağımsız konsept çalışmalar. Gerçek müşteri projesi değildir." },
   projects: {
     "zera-moda": { projectType: "Gelinlik web sitesi", description: "Koleksiyon keşfini yönlendirilmiş özel prova talebiyle birleştiren bir gelinlik web sitesi konsepti.", services: ["Web sitesi tasarımı / Geliştirme / Sanat yönetimi"], industry: "Moda", imageAlts: ["Zera Moda konseptinde özel prova talebi formu", "Zera Moda konseptinin masaüstü ana sayfası", "Zera Moda konseptinin mobil görünümü"] },
     "erbay-ekinci": { projectType: "Couture atölyesi web sitesi", description: "Koleksiyon hikâyeleri, atölye detayları ve net bir randevu talebi akışı sunan İstanbul merkezli haute couture web sitesi konsepti.", services: ["Web sitesi tasarımı / Sanat yönetimi / Geliştirme"], industry: "Haute Couture", imageAlts: ["Erbay Ekinci konseptinde atölye tanıtım bölümü", "Erbay Ekinci konseptinin masaüstü ana sayfası", "Erbay Ekinci konseptinin mobil görünümü"] },
