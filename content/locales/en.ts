@@ -12,7 +12,7 @@ export const en = {
     imageAlt: "NIMAY — Independent Digital Studio",
   },
   labels: {
-    home: "Home", work: "Work", contact: "Contact", language: "Language", darkAction: "Dark", lightAction: "Light", menu: "Menu", close: "Close", navigation: "Main navigation", mobileNavigation: "Mobile navigation", skipToContent: "Skip to content", basedIn: "Based in Türkiye", selectedWork: "Selected Work", conceptWork: "Concept work", services: "Services", sector: "Sector", year: "Year", viewProject: "View Project", conceptWebsite: "Concept Website", engagements: "Offer", websiteEngagements: "A tailored quote for every project.", typicalTimeline: "Typical timeline", terms: "Terms", approach: "Approach", approachSteps: "3 steps", studio: "Studio", capabilities: "Capabilities", capabilitiesSummary: "Capabilities overview", contactPrompt: "Tell me about your project.", copyEmail: "Copy email", emailCopied: "Email copied", emailSubject: "Website enquiry", whatsapp: "Message on WhatsApp", whatsappMessage: "Hello, I would like to talk to NIMAY Studio about my website project.", privacy: "Privacy", privacyPreferences: "Privacy preferences", analyticsPreferences: "Analytics preferences", allowAnalytics: "Allow analytics", rejectAnalytics: "Reject", analyticsDescription: "Allow analytics to help measure site use, or reject to keep optional analytics off. Your choice is saved on this device and can be changed at any time.", footerStudioDescriptor: "Independent Digital Studio", viewProjectAria: "View concept website",
+    home: "Home", work: "Work", contact: "Contact", language: "Language", darkAction: "Dark", lightAction: "Light", menu: "Menu", close: "Close", navigation: "Main navigation", mobileNavigation: "Mobile navigation", skipToContent: "Skip to content", basedIn: "Based in Türkiye", selectedWork: "Selected Work", conceptWork: "Concept work", services: "Services", sector: "Sector", year: "Year", viewProject: "View Project", conceptWebsite: "Concept Website", engagements: "Offer", websiteEngagements: "A tailored quote for every project.", typicalTimeline: "Estimated timeline", terms: "Terms", approach: "Approach", approachSteps: "3 steps", studio: "Studio", capabilities: "Capabilities", capabilitiesSummary: "Capabilities overview", contactPrompt: "Tell me about your project.", copyEmail: "Copy email", emailCopied: "Email copied", emailSubject: "Website enquiry", whatsapp: "Message on WhatsApp", whatsappMessage: "Hello, I would like to talk to NIMAY Studio about my website project.", privacy: "Privacy", privacyPreferences: "Privacy preferences", analyticsPreferences: "Analytics preferences", allowAnalytics: "Allow analytics", rejectAnalytics: "Reject", analyticsDescription: "Allow analytics to help measure site use, or reject to keep optional analytics off. Your choice is saved on this device and can be changed at any time.", footerStudioDescriptor: "Independent Digital Studio", viewProjectAria: "View concept website",
   },
   hero: {
     kicker: "NIMAY / Independent Digital Studio",
@@ -35,10 +35,10 @@ export const en = {
     timelineValue: "7–14",
     timelineUnit: "business days, depending on scope",
     scopeLabel: "Included",
-    scope: ["Discovery and content planning", "Information architecture", "Custom website design", "Responsive development", "Technical SEO setup", "Contact or enquiry flow", "Responsive QA and launch", "2 revision rounds", "30 days of technical bug support after handoff"],
+    scope: ["Discovery and content planning", "Information architecture", "Custom website design", "Responsive development", "Technical SEO setup", "Contact or enquiry flow", "Mobile testing and launch", "2 revision rounds", "30 days of technical bug support after handoff"],
     note: "Page count, revision allowance and support scope are set out in writing in the quote.",
   },
-  approachHeading: "How we work.",
+  approachHeading: "How I work.",
   approach: [
     { title: "Direction", description: "I learn the business, audience and constraints, then we agree what the site needs to communicate and do." },
     { title: "Design", description: "I define the visual system and page structure, then refine key interactions with you before development." },
