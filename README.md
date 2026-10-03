@@ -1,10 +1,10 @@
 # NIMAY
 
-Independent digital studio designing brand identities and websites from strategy through development.
+Independent digital studio designing and building custom websites.
 
 ## Overview
 
-NIMAY is an independent digital studio based in Türkiye and working worldwide. This repository contains the studio website, built around a concise editorial presentation of its work and practice.
+NIMAY is an independent digital studio based in Türkiye. This repository contains the studio website, built around a concise editorial presentation of its work and practice.
 
 ## Live Site
 

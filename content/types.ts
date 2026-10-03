@@ -7,13 +7,13 @@ export interface LocalizedProject {
   readonly industry: string;
 }
 
-export interface LocalizedEngagement {
+export interface LocalizedOffer {
+  readonly name: string;
   readonly audience: string;
   readonly timelineLabel: string;
   readonly scopeLabel: string;
   readonly scope: readonly string[];
-  readonly scopeIntro?: string;
-  readonly note?: string;
+  readonly note: string;
 }
 
 export interface SiteContent {
@@ -42,14 +42,11 @@ export interface SiteContent {
     readonly mobileNavigation: string;
     readonly skipToContent: string;
     readonly basedIn: string;
-    readonly workingWorldwide: string;
     readonly selectedWork: string;
-    readonly projectCount: string;
     readonly services: string;
     readonly sector: string;
     readonly year: string;
     readonly viewProject: string;
-    readonly pricePrefix: string;
     readonly conceptWebsite: string;
     readonly websiteEngagements: string;
     readonly typicalTimeline: string;
@@ -59,6 +56,9 @@ export interface SiteContent {
     readonly contactPrompt: string;
     readonly copyEmail: string;
     readonly emailCopied: string;
+    readonly emailSubject: string;
+    readonly whatsapp: string;
+    readonly whatsappMessage: string;
     readonly privacy: string;
     readonly privacyPreferences: string;
     readonly analyticsPreferences: string;
@@ -77,7 +77,7 @@ export interface SiteContent {
     readonly framing: string;
   };
   readonly projects: Readonly<Record<string, LocalizedProject>>;
-  readonly engagements: Readonly<Record<string, LocalizedEngagement>>;
+  readonly offer: LocalizedOffer;
   readonly approach: readonly { readonly title: string; readonly description: string }[];
   readonly approachHeading: string;
   readonly studioStatement: string;
