@@ -203,12 +203,13 @@
   --offset-sm: 8px;
   --offset-md: 10px;
   --tap: 2.75rem;
+  --header-height: 4.5rem;
   --duration-state: 200ms;
 }
 
 @layer base {
   * { box-sizing: border-box; }
-  html { text-size-adjust: 100%; scroll-padding-top: var(--space-5); scrollbar-gutter: stable; }
+  html { text-size-adjust: 100%; scroll-padding-top: calc(var(--header-height) + var(--space-4)); scrollbar-gutter: stable; }
   html:has(.mobile-menu[open]) { overflow: hidden; }
   body {
     margin: 0;
@@ -270,7 +271,7 @@
   .site-main:focus { outline: none; }
 
   /* Header */
-  .site-header { background: var(--bg); border-bottom: var(--border) solid var(--line); }
+  .site-header { position: sticky; top: 0; z-index: 30; background: var(--bg); border-bottom: var(--border) solid var(--line); }
   .site-header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4) var(--space-6); padding-block: var(--space-3); }
   .wordmark { display: inline-flex; align-items: center; min-height: var(--tap); font-size: 1.875rem; font-weight: 800; line-height: 1; letter-spacing: -0.06em; text-decoration: none; }
   .wordmark-mark { align-self: flex-start; margin-top: 8px; margin-left: 2px; font-size: 0.875rem; letter-spacing: 0; }
@@ -278,7 +279,9 @@
   .primary-nav ul, .mobile-menu-nav ul { list-style: none; margin: 0; padding: 0; }
   .primary-nav ul { display: flex; flex-wrap: wrap; gap: var(--space-2); }
   .locale-switcher { display: inline-flex; align-items: center; font-family: var(--font-label); font-size: var(--text-label); white-space: nowrap; }
-  .locale-link { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; min-height: var(--tap); text-decoration: none; }
+  /* Padding grows the tap target; the separator tucks under it so the visual spacing stays tight. */
+  .locale-link { display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap); padding-inline: 10px; text-decoration: none; }
+  .locale-separator { margin-inline: -6px; }
   .locale-link:hover { text-decoration: underline; text-underline-offset: 0.35em; }
   .locale-link[aria-current="page"] { font-weight: 500; text-decoration: underline; text-underline-offset: 0.35em; }
   .theme-action-light { display: none; }
@@ -341,11 +344,14 @@
 /* Compact header: the design hides secondary navigation; the menu keeps it reachable. */
 @media (max-width: 40rem) {
   .site-header-inner { gap: var(--space-2); }
-  .site-header-tools { gap: 6px; }
+  .site-header-tools { gap: 4px; }
   .primary-nav-secondary, .site-header-tools > .theme-control { display: none; }
   .primary-nav .pill { padding-inline: 12px; }
-  .site-header .locale-link { min-width: 1.5rem; }
   .mobile-navigation { display: block; }
+}
+/* Below ~375px the compact header wraps to two rows; keep anchor targets clear of it. */
+@media (max-width: 23.375rem) {
+  :root { --header-height: 7.75rem; }
 }
 @media (min-width: 48rem) {
   .analytics-consent { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--space-6); }

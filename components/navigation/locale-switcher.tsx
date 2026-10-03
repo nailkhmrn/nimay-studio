@@ -19,5 +19,5 @@ export function LocaleSwitcher({ locale, ariaLabel = "Language" }: { locale: Loc
     const path = pathname.replace(/^\/(en|tr)(?=\/|$)/, `/${nextLocale}`) || `/${nextLocale}`;
     return `${path}${query}${hash}`;
   };
-  return <div className="locale-switcher" aria-label={ariaLabel}>{(["tr", "en"] as const).map((nextLocale, index) => <span key={nextLocale} className="locale-switcher-item">{index > 0 && <span aria-hidden="true"> / </span>}<Link href={localizedPath(nextLocale)} aria-current={locale === nextLocale ? "page" : undefined} className="locale-link">{nextLocale.toUpperCase()}</Link></span>)}</div>;
+  return <div className="locale-switcher" aria-label={ariaLabel}>{(["tr", "en"] as const).map((nextLocale, index) => <span key={nextLocale} className="locale-switcher-item">{index > 0 && <span className="locale-separator" aria-hidden="true"> / </span>}<Link href={localizedPath(nextLocale)} aria-current={locale === nextLocale ? "page" : undefined} className="locale-link">{nextLocale.toUpperCase()}</Link></span>)}</div>;
 }
