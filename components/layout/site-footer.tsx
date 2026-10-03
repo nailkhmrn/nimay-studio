@@ -15,7 +15,7 @@ export function SiteFooter({ locale, content }: { locale: Locale; content: SiteC
         </div>
         <div className="footer-contact-grid">
           <div><p className="type-body text-muted footer-guidance">{content.contact.guidance}</p><p className="type-label footer-location">{content.contact.location}</p></div>
-          <div className="footer-email"><a className="type-h2" href={`mailto:${siteFacts.email}?subject=${encodeURIComponent("NIMAY enquiry")}`}>{siteFacts.email}</a><CopyEmail email={siteFacts.email} labels={content.labels} /></div>
+          <div className="footer-email">{siteFacts.whatsappNumber && <a className="type-h2" href={`https://wa.me/${siteFacts.whatsappNumber}?text=${encodeURIComponent(content.labels.whatsappMessage)}`} target="_blank" rel="noopener noreferrer">{content.labels.whatsapp}</a>}<a className="type-h2" href={`mailto:${siteFacts.email}?subject=${encodeURIComponent(content.labels.emailSubject)}`}>{siteFacts.email}</a><CopyEmail email={siteFacts.email} labels={content.labels} /></div>
         </div>
         <div className="footer-bottom"><div><span className="type-label">NIMAY</span><span className="type-label text-muted"> — {content.labels.footerStudioDescriptor}</span></div><div className="footer-legal"><Link className="type-label" href={`/${locale}/privacy`}>{content.labels.privacy}</Link><AnalyticsPreferencesButton label={content.labels.privacyPreferences} /></div></div>
       </Container>

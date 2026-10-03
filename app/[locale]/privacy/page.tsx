@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: content.metadata.description,
     alternates: {
       canonical: `/${locale}/privacy`,
-      languages: { en: "/en/privacy", tr: "/tr/privacy", "x-default": "/en/privacy" },
+      languages: { en: "/en/privacy", tr: "/tr/privacy", "x-default": "/tr/privacy" },
     },
     openGraph: {
       type: "website", siteName: "NIMAY Studio", url: `${base}/${locale}/privacy`, locale: content.metadata.ogLocale, alternateLocale: [content.metadata.alternateLocale], title: `${content.privacy.title} — NIMAY Studio`, description: content.metadata.description, images: [{ url: `/${locale}/opengraph-image`, width: 1200, height: 630, alt: content.metadata.imageAlt }],

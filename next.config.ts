@@ -5,12 +5,12 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
-      { source: "/", destination: "/en", permanent: true },
-      { source: "/privacy", destination: "/en/privacy", permanent: true },
-      { source: "/work", destination: "/en#selected-work", permanent: false },
-      { source: "/studio", destination: "/en#studio-statement", permanent: false },
-      { source: "/contact", destination: "/en#contact", permanent: false },
-      { source: "/services", destination: "/en#capabilities", permanent: false },
+      { source: "/", destination: "/tr", permanent: false },
+      { source: "/privacy", destination: "/tr/privacy", permanent: false },
+      { source: "/work", destination: "/tr#selected-work", permanent: false },
+      { source: "/studio", destination: "/tr#studio-statement", permanent: false },
+      { source: "/contact", destination: "/tr#contact", permanent: false },
+      { source: "/services", destination: "/tr#capabilities", permanent: false },
     ];
   },
 };

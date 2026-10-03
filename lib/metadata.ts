@@ -7,7 +7,7 @@ export const siteMetadata: Metadata = {
     default: "NIMAY — Independent Digital Studio",
     template: "%s — NIMAY Studio",
   },
-  description: "NIMAY is an independent digital studio designing brand identities and websites from strategy through development. Based in Türkiye, working worldwide.",
+  description: "NIMAY is an independent digital studio designing and building custom websites for independent professionals and small businesses. Based in Türkiye.",
   robots: { index: true, follow: true },
   icons: { icon: "/icon.svg", apple: "/apple-icon" },
 };

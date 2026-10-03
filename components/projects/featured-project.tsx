@@ -5,7 +5,7 @@ import type { projects } from "@/content/shared";
 
 type SharedProject = (typeof projects)[number];
 
-export function FeaturedProject({ project, content, locale, number }: { project: SharedProject; content: SiteContent; locale: Locale; number: "01" | "02" }) {
+export function FeaturedProject({ project, content, locale, number }: { project: SharedProject; content: SiteContent; locale: Locale; number: string }) {
   const localized = content.projects[project.slug]!;
   return (
     <article className="project-index-entry" aria-labelledby={`${project.slug}-title`}>
