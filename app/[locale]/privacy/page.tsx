@@ -50,13 +50,6 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
             </section>
           ))}
         </div>
-        <section className="privacy-entry" aria-labelledby="privacy-04">
-          <span className="type-label privacy-number">04</span>
-          <h2 id="privacy-04" className="type-h2">{locale === "tr" ? "Görünüm tercihi" : "Appearance preference"}</h2>
-          <div className="privacy-copy">
-            <p className="type-body">{locale === "tr" ? "Seçtiğiniz görünüm tercihi, işlevsel depolama kullanılarak tarayıcınızda yerel olarak saklanabilir. Bu tercih, analiz izninden bağımsız olarak çalışır." : "Your selected appearance preference may be stored locally in your browser using functional storage. This preference works independently of analytics consent."}</p>
-          </div>
-        </section>
         <section className="privacy-contact" aria-labelledby="privacy-contact-title">
           <p className="type-label">{content.privacy.contactLabel}</p>
           <h2 id="privacy-contact-title" className="type-h2">{content.privacy.contactHeading}</h2>

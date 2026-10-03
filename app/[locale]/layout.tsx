@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Geist, Instrument_Serif } from "next/font/google";
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
 import { AnalyticsConsent } from "@/components/analytics/analytics-consent";
-import Script from "next/script";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getSiteContent, isLocale, locales } from "@/lib/i18n";
@@ -46,9 +46,10 @@ export default async function LocaleLayout({ children, params }: Readonly<{ chil
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const content = getSiteContent(locale);
+  const themeCookie = (await cookies()).get("nimay-theme-v1")?.value;
+  const theme = themeCookie === "light" || themeCookie === "dark" ? themeCookie : undefined;
   return (
-    <html lang={locale} suppressHydrationWarning className={`${geist.variable} ${instrument.variable}`}>
-      <head><Script id="nimay-theme-init" src="/nimay-theme-init.js" strategy="beforeInteractive" /></head>
+    <html lang={locale} data-theme={theme} className={`${geist.variable} ${instrument.variable}`}>
       <body className="site-shell">
         <a className="skip-link" href="#main-content">{content.labels.skipToContent}</a>
         <SiteHeader locale={locale} content={content} />

@@ -2,27 +2,26 @@
 
 import type { SiteContent } from "@/content/types";
 
-const THEME_STORAGE_KEY = "nimay-theme-v1";
+const THEME_COOKIE_KEY = "nimay-theme-v1";
+const THEME_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 type Theme = "light" | "dark";
 
-function getTheme(): Theme {
-  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+function getEffectiveTheme(): Theme {
+  const explicitTheme = document.documentElement.dataset.theme;
+  if (explicitTheme === "light" || explicitTheme === "dark") return explicitTheme;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-function setTheme(theme: Theme) {
+function persistTheme(theme: Theme) {
+  document.cookie = `${THEME_COOKIE_KEY}=${theme}; Path=/; SameSite=Lax; Max-Age=${THEME_COOKIE_MAX_AGE}`;
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
-  try {
-    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
-  } catch {
-    // The current-page preference remains active when storage is unavailable.
-  }
 }
 
 export function ThemeControl({ labels }: { labels: SiteContent["labels"] }) {
   function toggleTheme() {
-    setTheme(getTheme() === "dark" ? "light" : "dark");
+    persistTheme(getEffectiveTheme() === "dark" ? "light" : "dark");
   }
 
   return (
