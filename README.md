@@ -20,7 +20,7 @@ NIMAY is an independent digital studio based in Türkiye. This repository contai
 
 ## Design Direction
 
-**Structural Editorial** — a restrained editorial system combining strong grid structure, serif display typography and functional digital UI.
+**Studio v2** — oversized Bricolage Grotesque display type, JetBrains Mono labels, 2px outlines, pill controls and hard offset shadows. Two approved themes share one structure: light (orange accent) and dark (peach accent). Theme tokens live in `app/globals.css`.
 
 ## Selected Work
 
@@ -31,7 +31,8 @@ Both are concept projects created to demonstrate digital design direction. They 
 
 ## Key Features
 
-- Responsive editorial grid and page layout
+- Responsive layout built on flex-wrap and fluid type
+- Light and dark themes (system preference, or a saved choice in the `nimay-theme-v1` cookie)
 - Accessible desktop and mobile navigation
 - Reduced-motion support
 - Production SEO metadata and Open Graph metadata
@@ -66,4 +67,4 @@ lib/          Metadata helpers
 public/       Favicon and retained project interface assets
 ```
 
-The project interface assets are retained for a future portfolio or case-study phase; the current homepage presents Selected Work without project imagery. See [ASSETS.md](ASSETS.md) for asset notes.
+The homepage shows captures of visible projects in Selected Work and in the hero. See [ASSETS.md](ASSETS.md) for asset notes.
