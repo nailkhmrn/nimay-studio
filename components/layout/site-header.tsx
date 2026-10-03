@@ -11,17 +11,23 @@ export function SiteHeader({ locale, content }: { locale: Locale; content: SiteC
   return (
     <header className="site-header">
       <Container className="site-header-inner">
-        <CurrentLink id="site-home-link" href={`/${locale}`} className="wordmark brand-link" aria-label={`${content.labels.home} — NIMAY`}>NIMAY</CurrentLink>
-        <div className="site-header-navigation">
-          <nav aria-label={content.labels.navigation} className="desktop-navigation">
+        <CurrentLink id="site-home-link" href={`/${locale}`} className="wordmark" aria-label={`${content.labels.home} — NIMAY`}>NIMAY<span className="wordmark-mark" aria-hidden="true">®</span></CurrentLink>
+        <div className="site-header-tools">
+          <nav aria-label={content.labels.navigation} className="primary-nav">
             <ul>
-              {navigation.map((item) => <li key={item.href}><CurrentLink href={item.href} className="nav-link type-label">{item.label}</CurrentLink></li>)}
+              {navigation.map((item) => (
+                <li key={item.href} className={item.primary ? undefined : "primary-nav-secondary"}>
+                  <CurrentLink href={item.href} className={item.primary ? "pill pill--solid" : "pill"}>
+                    {item.label}{item.primary && <span aria-hidden="true">↗</span>}
+                  </CurrentLink>
+                </li>
+              ))}
             </ul>
           </nav>
           <LocaleSwitcher locale={locale} ariaLabel={content.labels.language} />
           <ThemeControl labels={content.labels} />
+          <MobileNavigation locale={locale} content={content} navigation={navigation} />
         </div>
-        <MobileNavigation locale={locale} content={content} navigation={navigation} />
       </Container>
     </header>
   );
