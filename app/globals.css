@@ -27,11 +27,16 @@
   --on-accent: #0d0d0d;
   --surface: #f4f1ea;
   --window: #ffffff;
+  --window-bar: #f4f1ea;
+  --window-ink: #0d0d0d;
+  --window-live-shadow: var(--shadow);
+  --mock-zera-bg: #f7f1e8;
   --sketch-bar: #c9c7c0;
   --sketch-block: #dcdad3;
   --sketch-stroke: #8a8880;
   --button-bg: #0d0d0d;
   --button-fg: #f4f1ea;
+  --button-outline: #0d0d0d;
   --hero-bg: var(--accent);
   --hero-fg: var(--on-accent);
   --hero-emphasis: currentColor;
@@ -44,6 +49,8 @@
   --offer-muted: #a9a79f;
   --offer-edge: #f4f1ea;
   --offer-line: rgb(244 241 234 / 33%);
+  --offer-terms-rule: #f4f1ea;
+  --offer-rule: #0d0d0d;
   --card-1: #0d0d0d;
   --card-1-fg: #f4f1ea;
   --card-1-soft: #d6d3ca;
@@ -54,6 +61,7 @@
   --footer-fg: var(--on-accent);
   --footer-line: #0d0d0d;
   --footer-edge: #0d0d0d;
+  --footer-heading-accent: currentColor;
   --rule: #0d0d0d;
   --focus: #0d0d0d;
   --selection-bg: #0d0d0d;
@@ -72,12 +80,15 @@
   --accent: #f29e74;
   --on-accent: #111110;
   --surface: #1a1a18;
-  --window: #232321;
-  --sketch-bar: #5a5850;
-  --sketch-block: #3a3935;
-  --sketch-stroke: #5a5850;
+  --window: #e9e5da;
+  --window-bar: #d6d1c3;
+  --window-live-shadow: var(--accent);
+  --mock-zera-bg: #ece4d6;
+  --sketch-bar: #b7b3a5;
+  --sketch-block: #cbc7ba;
   --button-bg: var(--accent);
   --button-fg: var(--on-accent);
+  --button-outline: var(--fg);
   --hero-bg: var(--bg);
   --hero-fg: var(--fg);
   --hero-emphasis: var(--accent);
@@ -86,20 +97,23 @@
   --ticker-line: var(--line);
   --offer-bg: var(--surface);
   --offer-fg: var(--fg);
-  --offer-soft: var(--fg);
-  --offer-muted: var(--muted);
-  --offer-edge: var(--edge);
+  --offer-soft: #d6d3ca;
+  --offer-muted: #a9a79f;
+  --offer-edge: #77746b;
   --offer-line: var(--line);
+  --offer-terms-rule: var(--line);
+  --offer-rule: var(--line);
   --card-1: #232321;
   --card-1-fg: var(--fg);
-  --card-1-soft: var(--muted);
+  --card-1-soft: #d6d3ca;
   --card-3: transparent;
   --card-3-edge: var(--edge);
-  --card-3-soft: var(--muted);
+  --card-3-soft: #c9c5b8;
   --footer-bg: var(--surface);
   --footer-fg: var(--fg);
   --footer-line: var(--line);
-  --footer-edge: var(--edge);
+  --footer-edge: var(--fg);
+  --footer-heading-accent: var(--accent);
   --rule: var(--fg);
   --focus: var(--accent);
   --selection-bg: var(--accent);
@@ -117,12 +131,15 @@
     --accent: #f29e74;
     --on-accent: #111110;
     --surface: #1a1a18;
-    --window: #232321;
-    --sketch-bar: #5a5850;
-    --sketch-block: #3a3935;
-    --sketch-stroke: #5a5850;
+    --window: #e9e5da;
+    --window-bar: #d6d1c3;
+    --window-live-shadow: var(--accent);
+    --mock-zera-bg: #ece4d6;
+    --sketch-bar: #b7b3a5;
+    --sketch-block: #cbc7ba;
     --button-bg: var(--accent);
     --button-fg: var(--on-accent);
+    --button-outline: var(--fg);
     --hero-bg: var(--bg);
     --hero-fg: var(--fg);
     --hero-emphasis: var(--accent);
@@ -131,20 +148,23 @@
     --ticker-line: var(--line);
     --offer-bg: var(--surface);
     --offer-fg: var(--fg);
-    --offer-soft: var(--fg);
-    --offer-muted: var(--muted);
-    --offer-edge: var(--edge);
+    --offer-soft: #d6d3ca;
+    --offer-muted: #a9a79f;
+    --offer-edge: #77746b;
     --offer-line: var(--line);
+    --offer-terms-rule: var(--line);
+    --offer-rule: var(--line);
     --card-1: #232321;
     --card-1-fg: var(--fg);
-    --card-1-soft: var(--muted);
+    --card-1-soft: #d6d3ca;
     --card-3: transparent;
     --card-3-edge: var(--edge);
-    --card-3-soft: var(--muted);
+    --card-3-soft: #c9c5b8;
     --footer-bg: var(--surface);
     --footer-fg: var(--fg);
     --footer-line: var(--line);
-    --footer-edge: var(--edge);
+    --footer-edge: var(--fg);
+    --footer-heading-accent: var(--accent);
     --rule: var(--fg);
     --focus: var(--accent);
     --selection-bg: var(--accent);
@@ -154,8 +174,8 @@
 
 /* Theme-independent scale: type, spacing, form language. */
 :root {
-  /* Fixed illustration colours: the flat hero mock depicts the Zera site itself in both themes. */
-  --mock-zera-bg: #f7f1e8;
+  /* Fixed illustration colours for the flat Zera mock; its page tone (--mock-zera-bg) follows the theme. */
+  --mock-zera-arch: #f7f1e8;
   --mock-zera-ink: #0d0d0d;
   --mock-zera-muted: #5b5a55;
   --mock-zera-photo: #d4bfb2;
@@ -261,7 +281,7 @@
   .button { display: inline-flex; align-items: center; gap: var(--space-4); min-height: 3.5rem; padding: 0 28px; border: var(--border) solid transparent; border-radius: var(--radius-pill); font-size: var(--text-body); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; text-decoration: none; }
   .button:hover { text-decoration: underline; text-underline-offset: 0.2em; }
   .button--primary { background: var(--button-bg); color: var(--button-fg); }
-  .button--outline { border-color: var(--edge); }
+  .button--outline { border-color: var(--button-outline); }
 
   .skip-link { position: fixed; top: var(--space-4); left: var(--gutter); z-index: 50; transform: translateY(-200%); padding: var(--space-3) var(--space-5); border-radius: var(--radius-pill); background: var(--button-bg); color: var(--button-fg); font-weight: 600; }
   .skip-link:focus { transform: translateY(0); }
@@ -314,6 +334,7 @@
   .footer-number { display: none; }
   .site-shell:has(.home-sections) .footer-number { display: inline; }
   .footer-title { margin-top: var(--space-5); font-size: var(--text-contact); font-weight: 800; line-height: 0.84; letter-spacing: -0.065em; overflow-wrap: break-word; }
+  .footer-title-stop { color: var(--footer-heading-accent); }
   .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-7) var(--space-8); margin-top: var(--block-gap); }
   .footer-guidance { flex: 1 1 20rem; max-width: 31.25rem; }
   .footer-guidance > p:first-child { font-size: var(--text-body); letter-spacing: -0.01em; }

@@ -6,12 +6,15 @@ import { siteFacts } from "@/content/shared";
 import type { Locale, SiteContent } from "@/content/types";
 
 export function SiteFooter({ locale, content }: { locale: Locale; content: SiteContent }) {
+  // The dark theme colours the closing full stop; in light it inherits the heading colour.
+  const heading = content.contact.heading;
+  const stop = heading.endsWith(".") ? "." : "";
   return (
     <footer id="contact" className="site-footer" aria-labelledby="contact-title">
       <Container>
         {/* The section number only shows on the homepage, where (01)–(04) precede it. */}
         <p className="type-label"><span className="footer-number">(05) </span>{content.labels.contact}</p>
-        <h2 id="contact-title" className="footer-title">{content.contact.heading}</h2>
+        <h2 id="contact-title" className="footer-title">{stop ? heading.slice(0, -1) : heading}{stop && <span className="footer-title-stop">{stop}</span>}</h2>
         <div className="footer-grid">
           <div className="footer-guidance"><p>{content.contact.guidance}</p><p className="type-label footer-location">{content.contact.location}</p></div>
           <div className="footer-actions">
