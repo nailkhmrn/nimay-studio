@@ -2,10 +2,12 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Approach } from "@/components/sections/approach";
+import { CapabilityTicker } from "@/components/sections/capability-ticker";
 import { Engagements } from "@/components/sections/engagements";
 import { Hero } from "@/components/sections/hero";
-import { Capabilities, StudioStatement } from "@/components/sections/studio-story";
+import { StudioStatement } from "@/components/sections/studio-story";
 import { FeaturedProject } from "@/components/projects/featured-project";
+import { sectionNumber } from "@/components/ui/section-number";
 import { getSiteContent, isLocale } from "@/lib/i18n";
 import { projects } from "@/content/shared";
 import type { Locale } from "@/content/types";
@@ -19,14 +21,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   if (!isLocale(locale)) notFound();
   const content = getSiteContent(locale);
   const visibleProjects = projects.filter((project) => project.visible);
-  const projectCount = visibleProjects.length > 1 ? `01—${String(visibleProjects.length).padStart(2, "0")}` : "01";
-  return <>
+  return <div className="home-sections">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd(locale)).replace(/</g, "\\u003c") }} />
     <Hero content={content} />
-    <Section id="selected-work" className="selected-work" aria-labelledby="selected-work-title"><Container><div className="work-index"><h2 id="selected-work-title" className="type-label">{content.labels.selectedWork}</h2><span className="type-label">{projectCount}</span></div><p className="work-framing type-small text-muted">{content.selectedWork.framing}</p><div className="project-list">{visibleProjects.map((project, index) => <FeaturedProject key={project.slug} project={project} content={content} locale={locale} number={String(index + 1).padStart(2, "0")} />)}</div></Container></Section>
-    <Engagements content={content} />
-    <Approach content={content} />
-    <StudioStatement content={content} />
-    <Capabilities content={content} />
-  </>;
+    <CapabilityTicker content={content} />
+    <Section id="selected-work" className="work" aria-labelledby="selected-work-title">
+      <Container>
+        <div className="label-row"><h2 id="selected-work-title">{sectionNumber(1)} {content.labels.selectedWork}</h2><span className="text-muted">{content.labels.conceptWork}</span></div>
+        <p className="section-intro text-muted">{content.selectedWork.framing}</p>
+        {visibleProjects.map((project) => <FeaturedProject key={project.slug} project={project} content={content} locale={locale} />)}
+      </Container>
+    </Section>
+    <Approach content={content} position={2} />
+    <Engagements content={content} position={3} />
+    <StudioStatement content={content} position={4} />
+  </div>;
 }

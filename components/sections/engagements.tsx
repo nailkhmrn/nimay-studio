@@ -1,40 +1,37 @@
 import { Container } from "@/components/layout/container";
-import { Grid } from "@/components/layout/grid";
 import { Section } from "@/components/layout/section";
+import { sectionNumber } from "@/components/ui/section-number";
 import type { SiteContent } from "@/content/types";
 
-export function Engagements({ content }: { content: SiteContent }) {
+export function Engagements({ content, position }: { content: SiteContent; position: number }) {
   const offer = content.offer;
   return (
-    <Section id="engagements" className="engagements" aria-labelledby="engagements-title">
+    <Section id="engagements" className="offer" aria-labelledby="engagements-title">
       <Container>
-        <Grid className="engagements-heading">
-          <p className="type-label engagements-label">{content.labels.engagements}</p>
-          <h2 id="engagements-title" className="type-editorial">{content.labels.websiteEngagements}</h2>
-        </Grid>
-        <div className="engagement-list">
-          <div className="engagement">
-            <Grid className="engagement-grid">
-              <div className="engagement-identity">
-                <h3 className="type-h2">{offer.name}</h3>
-              </div>
-              <p className="type-body text-muted engagement-audience">{offer.audience}</p>
-              <div className="engagement-timeline">
-                <p className="type-label">{content.labels.typicalTimeline}</p>
-                <p className="type-small">{offer.timelineLabel}</p>
-              </div>
-              <div className="engagement-scope">
-                <p className="type-label">{offer.scopeLabel}</p>
-                <ul className="type-small">{offer.scope.map((scope) => <li key={scope}>{scope}</li>)}</ul>
-                <p className="type-small text-muted engagement-note">{offer.note}</p>
-              </div>
-            </Grid>
+        <div className="label-row"><span>{sectionNumber(position)} {content.labels.engagements}</span><span className="offer-muted">{offer.name}</span></div>
+        <div className="offer-head">
+          <h2 id="engagements-title" className="offer-title">{content.labels.websiteEngagements}</h2>
+          <div className="offer-duration">
+            <p className="type-label">{content.labels.typicalTimeline}</p>
+            <p className="offer-duration-value">{offer.timelineValue}</p>
+            <p className="offer-duration-unit">{offer.timelineUnit}</p>
           </div>
         </div>
-        <div className="engagement-terms">
-          <div className="engagement-terms-label"><p className="type-label">{content.labels.terms}</p></div>
-          <ul className="type-small text-muted">{content.terms.map((term) => <li key={term}>{term}</li>)}</ul>
+        <div className="offer-body">
+          <div className="offer-audience">
+            <h3 className="type-h2">{offer.name}</h3>
+            <p>{offer.audience}</p>
+          </div>
+          <div className="offer-scope">
+            <p className="type-label offer-muted">{offer.scopeLabel}</p>
+            <ul className="offer-scope-list">{offer.scope.map((item) => <li key={item}>{item}</li>)}</ul>
+            <p className="offer-note offer-muted">{offer.note}</p>
+          </div>
         </div>
+        <details className="offer-terms">
+          <summary className="type-label">{content.labels.terms}<span className="offer-terms-icon" aria-hidden="true">+</span></summary>
+          <ul>{content.terms.map((term) => <li key={term}>{term}</li>)}</ul>
+        </details>
       </Container>
     </Section>
   );

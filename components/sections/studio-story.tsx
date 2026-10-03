@@ -1,34 +1,23 @@
 import { Container } from "@/components/layout/container";
-import { Grid } from "@/components/layout/grid";
 import { Section } from "@/components/layout/section";
+import { sectionNumber } from "@/components/ui/section-number";
 import type { SiteContent } from "@/content/types";
 
-export function StudioStatement({ content }: { content: SiteContent }) {
+export function StudioStatement({ content, position }: { content: SiteContent; position: number }) {
+  const statement = content.studioStatement;
   return (
-    <Section id="studio-statement" className="studio-statement" aria-labelledby="studio-title">
+    <Section id="studio-statement" className="studio" aria-labelledby="studio-title">
       <Container>
-        <Grid>
-          <p className="type-label studio-label">{content.labels.studio}</p>
-          <h2 id="studio-title" className="type-editorial">{content.studioStatement}</h2>
-        </Grid>
-      </Container>
-    </Section>
-  );
-}
-
-export function Capabilities({ content }: { content: SiteContent }) {
-  return (
-    <Section id="capabilities" className="capabilities" aria-labelledby="capabilities-title">
-      <Container>
-        <h2 id="capabilities-title" className="type-label capabilities-label">{content.labels.capabilities}</h2>
-        <Grid>
+        <div className="label-row"><span>{sectionNumber(position)} {content.labels.studio}</span><span className="text-muted">{content.labels.capabilities}</span></div>
+        <h2 id="studio-title" className="studio-title">{statement.before}<span className="studio-highlight">{statement.emphasis}</span>{statement.after}</h2>
+        <div id="capabilities" className="capability-columns">
           {content.capabilities.map((item) => (
             <div className="capability" key={item.title}>
-              <h3 className="type-h2">{item.title}</h3>
+              <h3 className="capability-title">{item.title}</h3>
               <ul>{item.items.map((service) => <li key={service}>{service}</li>)}</ul>
             </div>
           ))}
-        </Grid>
+        </div>
       </Container>
     </Section>
   );
