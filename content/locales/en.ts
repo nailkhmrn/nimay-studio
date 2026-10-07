@@ -111,9 +111,9 @@ export const en = {
     { title: "Launch", text: "Going live, a checklist and support after handoff.", from: "Final check and launch approval.", me: "Domain, mobile, SEO and form checks; support after handoff." },
   ],
   viz: {
-    brief: { file: "brief.md", done: "Written ✓", rows: [["Goal", "More appointments"], ["Audience", "Local families"], ["Competitors", "3 clinics reviewed"], ["Tone", "Calm, reassuring"]] },
+    brief: { file: "brief.md", done: "Written ✓", rows: [["Goal", "What the site is for"], ["Audience", "Who it should reach"], ["Competitors", "Competitor review"], ["Tone", "How the site speaks"]] },
     design: { tags: ["Draft", "Colour", "Approved ✓"] },
-    code: { title: "Dental clinic", meter: "Speed · accessibility · SEO", ready: "ready ✓" },
+    code: { title: "Home", meter: "Speed · accessibility · SEO", ready: "ready ✓" },
     live: { checks: ["Domain connected", "Mobile test", "SEO check", "Form test"], live: "Live" },
   },
   work: {
@@ -152,7 +152,8 @@ export const en = {
     deliveryTitle: "7–14 business days",
     deliveryText: "A clear timeline is set according to scope. The quote is tailored to the project and written; what will be done is clear from start to finish.",
     facts: { time: "Timeline", quote: "Quote", tech: "Technology", place: "Location", timeValue: "7–14 business days", quoteValue: "Tailored, in writing", techValue: "Next.js", placeValue: "Türkiye" },
-    faqIndex: "(04) FAQ",
+    workTerms: {"idx":"(04) Terms of work","title":["Terms","of work"],"audience":"For independent professionals, small businesses and service brands. Price depends on page count, content readiness and timeline. You receive a written quote after our first conversation.","scopeLabel":"Included","scope":["Discovery and content planning","Information architecture","Custom website design","Responsive development","Technical SEO setup","Contact or enquiry flow","Mobile testing and launch","2 revision rounds","30 days of technical bug support after handoff"],"note":"Page count, revision allowance and support scope are set out in writing in the quote.","termsLabel":"Terms","terms":["50% upfront to begin / 50% before final production handoff.","Additional scope is quoted separately.","Domain, paid third-party services and production costs such as professional photography/video are not included unless quoted.","Ongoing SEO, advertising, ecommerce/payment systems, translation and ongoing maintenance are separate scopes.","30-day included support covers technical bugs in delivered work, not unlimited design/content changes."]},
+    faqIndex: "(05) FAQ",
     faqTitle: ["Frequently", "asked"],
     faq: [
       { q: "How is the price set?", a: "The price is tailored to the project. Once page count and scope are clear, I prepare a written quote." },

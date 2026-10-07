@@ -109,9 +109,9 @@ export const tr = {
     { title: "Yayın", text: "Yayına alma, kontrol listesi ve teslim sonrası destek.", from: "Son kontrol ve yayın onayı.", me: "Alan adı, mobil, SEO ve form kontrolleri; teslim sonrası destek." },
   ],
   viz: {
-    brief: { file: "brief.md", done: "Yazılı ✓", rows: [["Hedef", "Daha fazla randevu"], ["Kitle", "Mahalledeki aileler"], ["Rakip", "3 klinik incelendi"], ["Ton", "Sakin, güven veren"]] },
+    brief: { file: "brief.md", done: "Yazılı ✓", rows: [["Hedef", "Sitenin amacı"], ["Kitle", "Ulaşılacak kişiler"], ["Rakip", "Rakip incelemesi"], ["Ton", "Sitenin dili"]] },
     design: { tags: ["Taslak", "Renk", "Onay ✓"] },
-    code: { title: "Diş kliniği", meter: "Hız · erişilebilirlik · SEO", ready: "hazır ✓" },
+    code: { title: "Ana sayfa", meter: "Hız · erişilebilirlik · SEO", ready: "hazır ✓" },
     live: { checks: ["Alan adı bağlandı", "Mobil test", "SEO kontrolü", "Form testi"], live: "Yayında" },
   },
   work: {
@@ -150,7 +150,8 @@ export const tr = {
     deliveryTitle: "7–14 iş günü",
     deliveryText: "Kapsama göre net bir takvim verilir. Teklif projeye özel ve yazılı olur; baştan sona ne yapılacağı belli olur.",
     facts: { time: "Süre", quote: "Teklif", tech: "Teknoloji", place: "Konum", timeValue: "7–14 iş günü", quoteValue: "Projeye özel, yazılı", techValue: "Next.js", placeValue: "Türkiye" },
-    faqIndex: "(04) SSS",
+    workTerms: {"idx":"(04) Çalışma koşulları","title":["Çalışma","koşulları"],"audience":"Bağımsız profesyoneller, küçük işletmeler ve hizmet sektöründeki markalar için. Fiyat; sayfa sayısına, içeriğin hazır olup olmadığına ve takvime göre belirlenir. İlk görüşmeden sonra yazılı teklif alırsınız.","scopeLabel":"Dahil olanlar","scope":["Keşif ve içerik planı","Bilgi mimarisi","Özel web sitesi tasarımı","Mobil uyumlu geliştirme","Teknik SEO kurulumu","İletişim veya randevu talebi akışı","Mobil test ve yayına alma","2 revizyon turu","Tesliminden sonra 30 gün teknik hata desteği"],"note":"Sayfa sayısı, revizyon hakkı ve destek kapsamı teklifte yazılı olarak belirlenir.","termsLabel":"Koşullar","terms":["Başlangıçta %50 / nihai üretim tesliminden önce %50 ödeme.","Ek kapsam ayrıca fiyatlandırılır.","Alan adı, ücretli üçüncü taraf hizmetleri ve profesyonel fotoğraf/video gibi üretim maliyetleri ayrıca teklif edilmedikçe dahil değildir.","Sürekli SEO, reklam, e-ticaret/ödeme sistemleri, çeviri ve devam eden bakım ayrı kapsamlardır.","Dahil olan 30 günlük destek, teslim edilen çalışmadaki teknik hataları kapsar; sınırsız tasarım veya içerik değişikliğini kapsamaz."]},
+    faqIndex: "(05) SSS",
     faqTitle: ["Sık", "sorulanlar"],
     faq: [
       { q: "Fiyat nasıl belirleniyor?", a: "Fiyat projeye özeldir. Sayfa sayısı ve kapsam netleştikten sonra yazılı bir teklif hazırlanır." },

@@ -68,6 +68,23 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
+      <section className="sec ink" id="calisma-kosullari">
+        <div className="wrap wgrid">
+          <div className="case-meta" data-r>
+            <span className="mono idx">{s.workTerms.idx}</span>
+            <h2 className="disp"><BrLines lines={s.workTerms.title} /></h2>
+            <p>{s.workTerms.audience}</p>
+          </div>
+          <div className="case-meta" data-r>
+            <span className="mono idx">{s.workTerms.scopeLabel}</span>
+            <ul className="scope">{s.workTerms.scope.map((x) => <li key={x}>{x}</li>)}</ul>
+            <p className="note">{s.workTerms.note}</p>
+            <span className="mono idx">{s.workTerms.termsLabel}</span>
+            <ul className="scope">{s.workTerms.terms.map((x) => <li key={x}>{x}</li>)}</ul>
+          </div>
+        </div>
+      </section>
+
       <section className="sec paper">
         <div className="wrap">
           <div className="sech" data-r>
