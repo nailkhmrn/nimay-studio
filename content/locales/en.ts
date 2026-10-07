@@ -58,6 +58,7 @@ export const en = {
     idle: "Asking for a quote is not a commitment.",
     success: "Your message has reached me. I'll reply with a written quote.",
     failure: "The message could not be sent. Please try again in a moment or message me on WhatsApp.",
+    failureEmail: "The message could not be sent. Please try again in a moment or write to hello@nimaystudio.com.",
     missing: "This field can't be left empty.",
   },
   home: {

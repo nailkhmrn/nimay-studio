@@ -1,12 +1,13 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { submitContact } from "@/app/actions/contact";
 import { guard, onInput, onInvalid } from "@/lib/contact/client";
 import type { ContactState } from "@/lib/contact/schema";
 import type { Locale, SiteContent } from "@/content/types";
 import { Honeypot } from "../forms/Honeypot";
-import { Turnstile } from "../forms/Turnstile";
+import { Turnstile, turnstileSiteKey } from "../forms/Turnstile";
+import { failureMessage } from "@/lib/contact/messages";
 
 const initial: ContactState = { status: "idle" };
 
@@ -14,7 +15,10 @@ const initial: ContactState = { status: "idle" };
 export function ContactForm({ locale, form }: { locale: Locale; form: SiteContent["form"] }) {
   const [state, action, pending] = useActionState(submitContact, initial);
   const v = state.values;
-  const status = state.status === "idle" ? form.idle : state.message;
+  /* Turnstile hazır olana kadar düğme bekler; yüklenemez ya da hata verirse genel hata gösterilir */
+  const [ts, setTs] = useState<"waiting" | "ready" | "error">("waiting");
+  const blocked = Boolean(turnstileSiteKey) && ts !== "ready";
+  const status = ts === "error" ? failureMessage(form) : state.status === "idle" ? form.idle : state.message;
   const invalid = onInvalid(form.missing);
 
   return (
@@ -44,9 +48,9 @@ export function ContactForm({ locale, form }: { locale: Locale; form: SiteConten
         <textarea name="mesaj" maxLength={3000} required defaultValue={v?.mesaj} onInvalid={invalid} onInput={onInput}></textarea>
       </label>
       <Honeypot />
-      <Turnstile resetKey={state} />
+      <Turnstile resetKey={state} onToken={(t) => setTs(t ? "ready" : "waiting")} onError={() => setTs("error")} />
       <div className="crow">
-        <button className="mag" id="mag" type="submit" disabled={pending}>
+        <button className="mag" id="mag" type="submit" disabled={pending || blocked}>
           {form.send}
         </button>
         <p className="mono status" id="status" role="status">

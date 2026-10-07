@@ -56,6 +56,7 @@ export const tr = {
     idle: "Teklif istemek söz vermek demek değil.",
     success: "Mesajınız bana ulaştı. Yazılı bir teklifle dönerim.",
     failure: "Mesaj gönderilemedi. Biraz sonra tekrar deneyin ya da WhatsApp'tan yazın.",
+    failureEmail: "Mesaj gönderilemedi. Biraz sonra tekrar deneyin ya da hello@nimaystudio.com adresine yazın.",
     missing: "Bu alan boş bırakılamaz.",
   },
   home: {

@@ -1,3 +1,4 @@
+import { logFail } from './log'
 import type { ContactInput } from './schema'
 
 /* E-posta gönderimi (Resend REST API, ek bağımlılık yok). Anahtarlar yalnızca sunucuda okunur.
@@ -18,11 +19,11 @@ export async function sendContactMail(d: ContactInput): Promise<boolean> {
 
   if (!key || !to || !from) {
     if (isProd) {
-      console.error('[iletisim] e-posta ayarları eksik (RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL)')
+      logFail('eposta_ayari_eksik')
       return false
     }
     // yalnızca geliştirmede: gönderim yerine sunucu konsoluna yazılır
-    console.log('[iletisim] geliştirme modu, e-posta gönderilmedi:\n' + text)
+    console.log('[iletisim] geliştirme modu: e-posta gönderilmedi (içerik günlüğe yazılmaz)')
     return true
   }
 
@@ -34,10 +35,18 @@ export async function sendContactMail(d: ContactInput): Promise<boolean> {
       cache: 'no-store',
       signal: AbortSignal.timeout(10000),
     })
-    if (!r.ok) console.error('[iletisim] e-posta servisi hata döndürdü:', r.status)
+    if (!r.ok) {
+      // Resend hata gövdesinden yalnızca hata adı okunur (örn. validation_error); mesaj ve alıcı bilgisi yazılmaz.
+      let name = 'bilinmiyor'
+      try {
+        const j = (await r.json()) as { name?: unknown }
+        if (typeof j.name === 'string') name = j.name.slice(0, 60)
+      } catch {}
+      logFail('resend_hatasi', { durum: r.status, ad: name })
+    }
     return r.ok
   } catch (e) {
-    console.error('[iletisim] e-posta gönderilemedi:', e instanceof Error ? e.name : 'bilinmeyen hata')
+    logFail('resend_hatasi', { hata: e instanceof Error ? e.name : 'bilinmiyor' })
     return false
   }
 }

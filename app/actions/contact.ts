@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { getMessages } from "@/lib/contact/messages";
+import { logFail } from "@/lib/contact/log";
 import { sendContactMail } from "@/lib/contact/mail";
 import { allow } from "@/lib/contact/ratelimit";
 import { clean, contactSchema, TURLER, type ContactState } from "@/lib/contact/schema";
@@ -22,10 +23,15 @@ export async function submitContact(_prev: ContactState, formData: FormData): Pr
   };
 
   /* tuzak alan: insanlar görmez, botlar doldurur. Sessizce başarılı gibi yanıtlanır, hiçbir şey gönderilmez. */
-  if (clean(formData.get("website"))) return { status: "ok", message: MESSAGES.basari };
+  if (clean(formData.get("website"))) {
+    logFail("honeypot");
+    return { status: "ok", message: MESSAGES.basari };
+  }
 
   const parsed = contactSchema.safeParse(values);
   if (!parsed.success) {
+    // yalnızca hatalı alan adları yazılır, değerler yazılmaz
+    logFail("dogrulama_hatasi", { alanlar: [...new Set(parsed.error.issues.map((i) => String(i.path[0])))] });
     const empty = !values.ad || !values.eposta || !values.mesaj;
     return { status: "error", message: empty ? MESSAGES.eksik : MESSAGES.hata, values };
   }
