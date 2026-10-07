@@ -14,7 +14,3 @@ export function getSiteContent(locale: string): SiteContent {
   if (locale === "tr") return tr;
   notFound();
 }
-
-export function localePath(locale: Locale, path = "") {
-  return `/${locale}${path}` || `/${locale}`;
-}

@@ -15,28 +15,33 @@ NIMAY is an independent digital studio based in Türkiye. This repository contai
 - Next.js App Router
 - React
 - TypeScript
-- Tailwind CSS
+- Plain CSS (two stylesheets: `styles/home.css` for the homepage, `styles/site.css` for inner pages)
+- Server Actions with zod validation, Cloudflare Turnstile and Upstash rate limiting for the contact form
 - Vercel
 
 ## Design Direction
 
-**Studio v2** — oversized Bricolage Grotesque display type, JetBrains Mono labels, 2px outlines, pill controls and hard offset shadows. Two approved themes share one structure: light (orange accent) and dark (peach accent). Theme tokens live in `app/globals.css`.
+**Studio v3** — cobalt and lime. Oversized condensed Archivo display type, DM Mono labels, a WebGL hero, calm slow motion. Two palettes share one structure: cobalt (default) and night. The light/dark switch in the header keeps the existing `nimay-theme-v1` cookie (`light` = cobalt, `dark` = night). Palette tokens live at the top of `styles/site.css` and `styles/home.css`.
 
 ## Selected Work
 
 - [Zera Moda](https://zera-moda-demo.vercel.app) — Concept Website
-- [Erbay Ekinci](https://erbay-ekinci-haute-couture.vercel.app) — Concept Website
 
-Both are concept projects created to demonstrate digital design direction. They are not commissioned client work.
+Zera Moda is a concept project created to demonstrate digital design direction. It is not commissioned client work. Erbay Ekinci stays hidden (`visible: false` in `content/shared.ts`) until the business agrees to be shown.
 
 ## Key Features
 
-- Responsive layout built on flex-wrap and fluid type
-- Light and dark themes (system preference, or a saved choice in the `nimay-theme-v1` cookie)
-- Accessible desktop and mobile navigation
-- Reduced-motion support
-- Production SEO metadata and Open Graph metadata
-- Sitemap and robots.txt
+- Turkish and English (`/tr`, `/en`) with localized page addresses (`/tr/isler`, `/en/work`, ...). Page folders use the Turkish names; English addresses are rewritten in `next.config.ts` (see `lib/routes.ts`)
+- Old single-page addresses (`/work`, `/studio`, `/contact`, `/services`, `/privacy`) redirect permanently to the new pages
+- Optional GA4 analytics behind an explicit consent choice
+- Contact form (`app/actions/contact.ts`): server-side validation, honeypot, Turnstile, rate limit, email delivery
+- Strict CSP with a per-request nonce (`proxy.ts`, `lib/csp.ts`) and security headers
+- Reduced-motion support; canvas and WebGL pause off-screen
+- Sitemap with hreflang alternates, robots.txt, Open Graph image, JSON-LD
+
+## Environment
+
+Copy `.env.example` to `.env.local`. Without the contact-form variables the form fails closed in production.
 
 ## Local Development
 
@@ -60,11 +65,14 @@ There is currently no test script configured in `package.json`.
 ## Project Structure
 
 ```text
-app/          App Router pages, global styles, metadata and SEO routes
-components/   Shared layout, navigation, project and section components
-content/      Navigation, studio and project content
-lib/          Metadata helpers
-public/       Favicon and retained project interface assets
+app/(home)    Homepage root layout
+app/(inner)   Inner pages root layout (work, services, process, about, contact, privacy)
+app/actions   Contact form server action
+components/   Layout, sections, homepage and form components
+content/      TR/EN text (content/locales), projects and site facts
+lib/          Routes, SEO, CSP, contact form logic, effects (reveal, WebGL, canvas)
+styles/       home.css and site.css
+public/       Favicon, project captures and the static hero fallback
 ```
 
-The homepage shows captures of visible projects in Selected Work and in the hero. See [ASSETS.md](ASSETS.md) for asset notes.
+The work pages show captures of visible projects. See [ASSETS.md](ASSETS.md) for asset notes.
