@@ -30,7 +30,6 @@ export const tr = {
     cta: "Teklif al",
     nav: { home: "Ana sayfa", work: "İşler", services: "Hizmetler", process: "Süreç", about: "Hakkımda", contact: "İletişim" },
     footerCopy: "© 2026 NIMAY",
-    clockPrefix: "TR ",
     skipToContent: "İçeriğe geç",
     language: "Dil",
     themeToDark: "Koyu",

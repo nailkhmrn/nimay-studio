@@ -32,7 +32,6 @@ export const en = {
     cta: "Get a quote",
     nav: { home: "Home", work: "Work", services: "Services", process: "Process", about: "About", contact: "Contact" },
     footerCopy: "© 2026 NIMAY",
-    clockPrefix: "TR ",
     skipToContent: "Skip to content",
     language: "Language",
     themeToDark: "Dark",
