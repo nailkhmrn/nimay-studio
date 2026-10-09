@@ -97,7 +97,6 @@ export const en = {
       title: ["Hello,", "I'm Nail."],
       text: "I design websites on my own in Türkiye. I started because I love design; I still stop and look when I see a well-made site. The person who talks to you, designs your project and codes it is the same: me.",
       cta: "Get to know the studio",
-      portraitCaption: ["Photo coming soon", "Nail"],
     },
     contact: {
       index: "(05) Contact",

@@ -312,3 +312,6 @@ footer .analytics-preferences-button:hover{color:var(--acc)}
 .prv a,.prv-mail{text-decoration:underline;text-underline-offset:4px}
 @media(max-width:560px){.prv{grid-template-columns:44px minmax(0,1fr)}}
 .reach a{text-decoration:underline;text-underline-offset:4px}
+
+/* fotoğraf yokken Hakkımda tek sütun */
+.sgrid.solo{grid-template-columns:minmax(0,1fr)}
