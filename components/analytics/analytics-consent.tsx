@@ -90,12 +90,12 @@ export function AnalyticsConsent({ content }: { content: SiteContent }) {
       })();
     `}</Script>}
     {bannerIsVisible && <section id="analytics-consent-banner" className="analytics-consent" aria-labelledby="analytics-consent-title" aria-describedby="analytics-consent-description">
-      <div className="analytics-consent-copy"><h2 id="analytics-consent-title" className="type-label">{content.labels.analyticsPreferences}</h2><p id="analytics-consent-description" className="type-small">{content.labels.analyticsDescription}</p></div>
-      <div className="analytics-consent-actions"><button ref={allowButton} type="button" onClick={() => choose("accepted")}>{content.labels.allowAnalytics}</button><button type="button" onClick={() => choose("rejected")}>{content.labels.rejectAnalytics}</button></div>
+      <div className="analytics-consent-copy"><h2 id="analytics-consent-title" className="mono">{content.consent.title}</h2><p id="analytics-consent-description">{content.consent.description}</p></div>
+      <div className="analytics-consent-actions"><button ref={allowButton} type="button" onClick={() => choose("accepted")}>{content.consent.allow}</button><button type="button" onClick={() => choose("rejected")}>{content.consent.reject}</button></div>
     </section>}
   </>;
 }
 
 export function AnalyticsPreferencesButton({ label }: { label: string }) {
-  return <button className="analytics-preferences-button type-label" type="button" onClick={() => window.dispatchEvent(new Event(OPEN_PREFERENCES_EVENT))}>{label}</button>;
+  return <button className="analytics-preferences-button" type="button" onClick={() => window.dispatchEvent(new Event(OPEN_PREFERENCES_EVENT))}>{label}</button>;
 }
