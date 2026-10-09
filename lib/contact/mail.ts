@@ -1,3 +1,4 @@
+import { z } from 'zod'
 import { logFail } from './log'
 import type { ContactInput } from './schema'
 
@@ -11,7 +12,19 @@ const TUR_ADI: Record<ContactInput['tur'], string> = {
   emin: 'Henüz emin değilim',
 }
 
+/* Reply-To olarak gönderenin adresi kullanılır. Adres sunucuda zod ile doğrulanmıştır (schema.ts); burada ayrıca
+   başlık enjeksiyonuna karşı satır sonu, boşluk ve ayraç içermediği son kez denetlenir. */
+function safeReplyTo(email: string): string | null {
+  if (email.length > 254 || /[\r\n\u0000-\u001F\u007F\s<>,;"]/.test(email)) return null
+  return z.email().safeParse(email).success ? email : null
+}
+
 export async function sendContactMail(d: ContactInput): Promise<boolean> {
+  const replyTo = safeReplyTo(d.eposta)
+  if (!replyTo) {
+    logFail('dogrulama_hatasi', { alanlar: ['eposta'] })
+    return false
+  }
   const key = process.env.RESEND_API_KEY
   const to = process.env.CONTACT_TO_EMAIL
   const from = process.env.CONTACT_FROM_EMAIL
@@ -31,7 +44,7 @@ export async function sendContactMail(d: ContactInput): Promise<boolean> {
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from, to: [to], reply_to: d.eposta, subject: "NIMAY iletişim formu", text }),
+      body: JSON.stringify({ from, to: [to], reply_to: replyTo, subject: "NIMAY iletişim formu", text }),
       cache: 'no-store',
       signal: AbortSignal.timeout(10000),
     })
