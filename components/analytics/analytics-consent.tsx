@@ -75,7 +75,7 @@ export function AnalyticsConsent({ content }: { content: SiteContent }) {
   }
 
   return <>
-    {process.env.NODE_ENV === "production" && choice === "accepted" && <Script id="nimay-ga4-consented" strategy="afterInteractive">{`
+    {process.env.NODE_ENV === "production" && choice === "accepted" && <Script id="nimay-ga4-consented" strategy="lazyOnload">{`
       (function () {
         if (window.location.hostname !== 'nimaystudio.com') return;
         window['ga-disable-${GA_MEASUREMENT_ID}'] = false;

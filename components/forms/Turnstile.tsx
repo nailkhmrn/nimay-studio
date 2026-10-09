@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TurnstileApi {
   render: (el: HTMLElement, options: Record<string, unknown>) => string;
@@ -26,6 +26,8 @@ export function Turnstile({ resetKey, onToken, onError }: { resetKey: unknown; o
   const widget = useRef<string | null>(null);
   const timer = useRef<number | undefined>(undefined);
   const first = useRef(true);
+  /* betik yalnızca form ekrana yaklaşınca yüklenir (ana sayfada iletişim bölümü sayfanın en altındadır) */
+  const [near, setNear] = useState(false);
   const cb = useRef({ onToken, onError });
   useEffect(() => {
     cb.current = { onToken, onError };
@@ -56,6 +58,26 @@ export function Turnstile({ resetKey, onToken, onError }: { resetKey: unknown; o
       },
     });
   };
+
+  useEffect(() => {
+    const target = box.current?.closest("form") ?? box.current;
+    if (!target) return;
+    if (typeof IntersectionObserver === "undefined") {
+      const t = window.setTimeout(() => setNear(true), 0);
+      return () => clearTimeout(t);
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setNear(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" },
+    );
+    io.observe(target);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     render();
@@ -89,7 +111,7 @@ export function Turnstile({ resetKey, onToken, onError }: { resetKey: unknown; o
       <div className="ts">
         <div ref={box} />
       </div>
-      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" strategy="afterInteractive" onLoad={render} onReady={render} onError={() => fail("betik-yuklenemedi")} />
+      {near && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" strategy="afterInteractive" onLoad={render} onReady={render} onError={() => fail("betik-yuklenemedi")} />}
     </>
   );
 }

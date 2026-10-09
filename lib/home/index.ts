@@ -24,12 +24,27 @@ export function homeEffects(): Cleanup {
     const id = window.setTimeout(fn, 200)
     return () => clearTimeout(id)
   }
+  /* ilk boyama: iki kare beklenir, ardından tarayıcı boştayken çalışır */
+  const afterPaint = (fn: () => void) => {
+    let off: Cleanup = () => {}
+    const r1 = requestAnimationFrame(() => {
+      r2 = requestAnimationFrame(() => {
+        off = idle(fn)
+      })
+    })
+    let r2 = 0
+    return () => {
+      cancelAnimationFrame(r1)
+      cancelAnimationFrame(r2)
+      off()
+    }
+  }
   offs.push(
-    idle(() => {
+    afterPaint(() => {
       if (disposed) return
       offs.push(cursor(), magneticHome(), browserFrames({ x: 14, y: 10 }), viz())
     }),
-    idle(() => {
+    afterPaint(() => {
       if (disposed) return
       import('./graphics').then((m) => {
         if (disposed) return
