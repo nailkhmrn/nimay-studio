@@ -194,7 +194,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="wrap sgrid">
           <div className="portrait" data-r>
             <canvas id="c-glass" aria-hidden="true"></canvas>
-            <div className="cap mono"><span>{h.studio.portraitCaption[0]}</span><span>{h.studio.portraitCaption[1]}</span></div>
           </div>
           <div className="sbody">
             <div data-r>

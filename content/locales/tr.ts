@@ -95,7 +95,6 @@ export const tr = {
       title: ["Merhaba,", "ben Nail."],
       text: "Türkiye'de tek başıma web tasarım yapıyorum. Bu işe tasarımı sevdiğim için başladım; güzel yapılmış bir site görünce hâlâ durup bakıyorum. Projenizle konuşan, onu tasarlayan ve kodlayan kişi aynı: ben.",
       cta: "Stüdyoyu tanı",
-      portraitCaption: ["Fotoğraf eklenecek", "Nail"],
     },
     contact: {
       index: "(05) İletişim",

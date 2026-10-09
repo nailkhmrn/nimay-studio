@@ -1,6 +1,6 @@
 /* NIMAY ortak sistem: palet, tipografi, gezinme, bölümler, bileşenler */
 :root{
-  --bg:#2B22FF; --fg:#F4F2FF; --acc:#D8FF3C; --ink:#07070D; --onink:#F2F2F8; --paper:#ECEAF7; --onpaper:#0B0B14; --mut:rgba(244,242,255,.72);
+  --bg:#2B22FF; --fg:#F4F2FF; --acc:#D8FF3C; --ink:#07070D; --onink:#F2F2F8; --paper:#ECEAF7; --onpaper:#0B0B14; --mut:rgba(244,242,255,.8);
   color-scheme:dark;
 }
 html[data-pal="limon"]{ --bg:#D9FF3F; --fg:#0A0A0A; --acc:#2B22FF; --ink:#0A0A0A; --onink:#F4F6E8; --paper:#F4F7E4; --onpaper:#0A0A0A; --mut:rgba(10,10,10,.72); color-scheme:light; }
@@ -312,3 +312,6 @@ footer .analytics-preferences-button:hover{color:var(--acc)}
 .prv a,.prv-mail{text-decoration:underline;text-underline-offset:4px}
 @media(max-width:560px){.prv{grid-template-columns:44px minmax(0,1fr)}}
 .reach a{text-decoration:underline;text-underline-offset:4px}
+
+/* fotoğraf yokken Hakkımda tek sütun */
+.sgrid.solo{grid-template-columns:minmax(0,1fr)}

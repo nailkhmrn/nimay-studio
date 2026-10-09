@@ -24,10 +24,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <PageHead kicker={a.kicker} title={a.title} lead={a.lead} />
 
       <section className="sec ink">
-        <div className="wrap sgrid">
-          <div className="portrait" data-r>
-            <div className="cap mono"><span>{content.home.studio.portraitCaption[0]}</span><span>{content.home.studio.portraitCaption[1]}</span></div>
-          </div>
+        <div className="wrap sgrid solo">
           <div className="sbody">
             <div data-r>
               <span className="mono idx">{a.index}</span>
