@@ -7,7 +7,6 @@ import { ThemeControl } from "@/components/theme/theme-control";
 import type { Locale, PageKey, SiteContent } from "@/content/types";
 import { pagePath } from "@/lib/routes";
 import type { Theme } from "@/lib/theme";
-import { Clock } from "./clock";
 import { LocaleSwitch } from "./locale-switch";
 
 const pill: Exclude<PageKey, "privacy" | "contact">[] = ["work", "services", "process", "about"];
@@ -65,7 +64,6 @@ export function SiteChrome({ locale, content, theme, home = false }: { locale: L
           ))}
         </nav>
         <div className="navr">
-          {home && <Clock className="mono clock" id="clock1" prefix={c.clockPrefix} interval={15000} ariaHidden />}
           <LocaleSwitch locale={locale} ariaLabel={c.language} />
           <ThemeControl initial={theme} labels={c} />
           <Link className="cta mono" href={pagePath(locale, "contact")}>
