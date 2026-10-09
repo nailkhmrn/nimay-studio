@@ -35,7 +35,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               <div className="reach mono">
                 {siteFacts.whatsappNumber && <div><span>{c.reach.whatsapp}</span><a href={`https://wa.me/${siteFacts.whatsappNumber}`} target="_blank" rel="noopener noreferrer">{content.chrome.whatsapp}</a></div>}
                 <div><span>{c.reach.email}</span><a href={`mailto:${siteFacts.email}`}>{siteFacts.email}</a></div>
-                <div><span>{c.reach.place}</span><span>{c.reach.placeValue} · <Clock as="b" style={{ fontWeight: 500 }} /></span></div>
+                <div><span>{c.reach.place}</span><span>{c.reach.placeValue}<Clock as="b" before=" · " style={{ fontWeight: 500 }} /></span></div>
                 <div><span>{c.reach.quote}</span><span>{c.reach.quoteValue}</span></div>
               </div>
             </div>

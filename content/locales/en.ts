@@ -2,13 +2,19 @@ import type { SiteContent } from "@/content/types";
 
 /* EN metinler: mevcut EN dosyasındaki terimler ve ses korunarak yeni TR metinlerin sadık çevirisi.
    Mevcut EN'de karşılığı olanlar (ana sayfa SEO, proje bilgileri, çerez onayı, gizlilik) olduğu gibi kaldı. */
+/* Stüdyo ve Hakkımda paragrafları ana sayfada ve Hakkımda'da aynıdır, tek yerde tutulur. */
+const studioStory = [
+  "I design and build websites for businesses and personal brands. My goal isn't just for you to have a site online. I want anyone who lands on it to feel that the brand in front of them is high quality, trustworthy and serious about its work.",
+  "I manage the whole process myself, from design to code. I like sites whose typography, spacing, colour and layout have been chosen with care. I enjoy opening a site and knowing at once where to look. I care about every project having a character of its own, because I don't want every site to look the same.",
+];
+
 export const en = {
   languageName: "English",
   metadata: {
-    title: "NIMAY — Independent Digital Studio",
-    description: "NIMAY is an independent digital studio designing and building custom websites for independent professionals and small businesses. Based in Türkiye.",
-    ogTitle: "NIMAY — Independent Digital Studio",
-    ogDescription: "NIMAY is an independent digital studio designing and building custom websites for independent professionals and small businesses. Based in Türkiye.",
+    title: "NIMAY — Web Design and Next.js Development",
+    description: "Custom web design, Next.js development and technical SEO for businesses and personal brands. Websites that suit your brand, from an independent studio in Türkiye.",
+    ogTitle: "NIMAY — Web Design and Next.js Development",
+    ogDescription: "Custom web design, Next.js development and technical SEO for businesses and personal brands. Websites that suit your brand, from an independent studio in Türkiye.",
     ogLocale: "en_US",
     alternateLocale: "tr_TR",
     imageAlt: "NIMAY — Independent Digital Studio",
@@ -19,7 +25,7 @@ export const en = {
     work: { title: "NIMAY Studio Work", description: "NIMAY concept website work." },
     services: { title: "NIMAY Studio Services", description: "Custom design, Next.js development, technical SEO and launch." },
     process: { title: "NIMAY Studio Process", description: "How NIMAY works: listening, design, development, launch." },
-    about: { title: "NIMAY Studio About", description: "NIMAY is a one-person independent web design studio run by Nail." },
+    about: { title: "NIMAY Studio About", description: "A one-person web design studio run by Nail. Web design, Next.js development and technical SEO, all handled by one person." },
     contact: { title: "NIMAY Studio Contact", description: "Talk to NIMAY about your project: a written quote and a clear timeline." },
   },
   chrome: {
@@ -63,8 +69,8 @@ export const en = {
   home: {
     heroTopLeft: ["Open to new projects", "Independent web studio"],
     heroTopRight: ["Next.js · Technical SEO", "Türkiye"],
-    heroTitle: ["Sites that look good,", "load fast and", "work just as well", "on a phone."],
-    heroSub: "I'm Nail. I design and code your website, and I'm the only person you'll talk to about your project.",
+    heroTitle: ["A website that","suits your brand."],
+    heroSub: "I design and build websites that explain your business clearly and reflect your brand's character.",
     heroCta: "See selected work",
     loading: "NIMAY / loading",
     work: {
@@ -94,7 +100,7 @@ export const en = {
     studio: {
       index: "(04) Studio",
       title: ["Hello,", "I'm Nail."],
-      text: "I design websites on my own in Türkiye. I started because I love design; I still stop and look when I see a well-made site. The person who talks to you, designs your project and codes it is the same: me.",
+      text: studioStory,
       cta: "Get to know the studio",
     },
     contact: {
@@ -181,17 +187,15 @@ export const en = {
     lead: "I design websites on my own in Türkiye.",
     index: "(01) About",
     whyTitle: ["Why I", "do this work"],
-    story: [
-      "I started this work because I love design. I still stop and look when I see a well-made site. The opposite bothers me too: walls of plain text, pages that never move, shapes that never settle into the layout, blurry images.",
-      "I try to make designs that sit right with everyone and are liked at first glance. My own site is the best example: I've redesigned it many times. The person who talks to you, designs your project and codes it is the same: me.",
-    ],
+    story: studioStory,
     facts: { place: "Location", tech: "Technology", time: "Timeline", quote: "Quote", timeValue: "7–14 business days", quoteValue: "Tailored, in writing" },
     trustIndex: "(02) Trust",
     trustTitle: ["Why should", "you trust me?"],
     trust: [
       "I don't have a published client project yet. The work on the Work page is a concept; you can see what I do there.",
-      "Scope, price and timeline come in writing. I don't move to the next step without your approval.",
-      "Asking for a quote is not a commitment. We talk first, the decision is yours.",
+      "Your project matters to me. I don't just do what's asked and hand it over; when it's useful I'll share my own view, and we think it through together for a better result.",
+      "I'm open about what can and can't be done. I don't make unrealistic promises.",
+      "My aim is to make work I'll be proud to show in my portfolio and that will represent your brand with confidence.",
     ],
     cta: { title: ["Let's work", "together."], link: "Tell me about your project", note: "A few sentences are enough." },
   },
