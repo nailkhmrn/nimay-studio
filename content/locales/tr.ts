@@ -1,12 +1,18 @@
 /* TR metinler: yeni tasarımın (mavi/limon) onaylı metinleri. Mevcut canlı siteden korunanlar:
    ana sayfa SEO başlığı ve açıklaması, proje bilgileri, çerez onayı ve gizlilik metni. */
+/* Stüdyo ve Hakkımda paragrafları ana sayfada ve Hakkımda'da aynıdır, tek yerde tutulur. */
+const studioStory = [
+  "İşletmeler ve kişisel markalar için web siteleri tasarlıyor ve geliştiriyorum. Amacım sadece internette bir siteniz olması değil. Sitenize giren biri, karşısındaki markanın kaliteli, güvenilir ve işini ciddiye alan bir marka olduğunu hissetsin istiyorum.",
+  "Tasarımdan yazılıma süreci kendim yönetiyorum. Tipografisi, boşlukları, renkleri ve yerleşimi bilinçli seçilmiş siteleri seviyorum. Bir siteye girdiğimde nereye bakacağımı hemen anlayabilmek hoşuma gidiyor. Her projede markanın kendine ait bir karakteri olmasına önem veriyorum, çünkü her sitenin birbirine benzemesini istemiyorum.",
+];
+
 export const tr = {
   languageName: "Türkçe",
   metadata: {
-    title: "NIMAY — Bağımsız Dijital Stüdyo",
-    description: "NIMAY, bağımsız profesyoneller ve küçük işletmeler için özel tasarlanmış web siteleri hazırlayan bağımsız bir dijital stüdyodur. Türkiye merkezli.",
-    ogTitle: "NIMAY — Bağımsız Dijital Stüdyo",
-    ogDescription: "NIMAY, bağımsız profesyoneller ve küçük işletmeler için özel tasarlanmış web siteleri hazırlayan bağımsız bir dijital stüdyodur. Türkiye merkezli.",
+    title: "NIMAY — Web Tasarım ve Next.js Geliştirme",
+    description: "İşletmeler ve kişisel markalar için özel web tasarım, Next.js ile geliştirme ve teknik SEO. Markanıza yakışan web siteleri, Türkiye merkezli bağımsız stüdyo.",
+    ogTitle: "NIMAY — Web Tasarım ve Next.js Geliştirme",
+    ogDescription: "İşletmeler ve kişisel markalar için özel web tasarım, Next.js ile geliştirme ve teknik SEO. Markanıza yakışan web siteleri, Türkiye merkezli bağımsız stüdyo.",
     ogLocale: "tr_TR",
     alternateLocale: "en_US",
     imageAlt: "NIMAY — Bağımsız Dijital Stüdyo",
@@ -17,7 +23,7 @@ export const tr = {
     work: { title: "NIMAY Studio İşler", description: "NIMAY konsept web sitesi çalışmaları." },
     services: { title: "NIMAY Studio Hizmetler", description: "Özel tasarım, Next.js kodlama, teknik SEO ve yayın." },
     process: { title: "NIMAY Studio Süreç", description: "NIMAY çalışma süreci: dinleme, tasarım, kodlama, yayın." },
-    about: { title: "NIMAY Studio Hakkımda", description: "NIMAY, Nail tarafından yürütülen tek kişilik bağımsız web tasarım stüdyosu." },
+    about: { title: "NIMAY Studio Hakkımda", description: "Nail tarafından yürütülen tek kişilik web tasarım stüdyosu. Web tasarım, Next.js ile geliştirme ve teknik SEO tek elden yönetilir." },
     contact: { title: "NIMAY Studio İletişim", description: "NIMAY ile projenizi konuşun: yazılı teklif ve net takvim." },
   },
   chrome: {
@@ -62,8 +68,8 @@ export const tr = {
   home: {
     heroTopLeft: ["Yeni projelere açık", "Bağımsız web stüdyosu"],
     heroTopRight: ["Next.js · Teknik SEO", "Türkiye"],
-    heroTitle: ["Güzel görünen,", "hızlı açılan,", "telefonda da düzgün", "duran siteler."],
-    heroSub: "Ben Nail. Web sitenizi tasarlar ve kodlarım; projenizle bir tek ben konuşurum.",
+    heroTitle: ["Markanıza yakışan","bir web sitesi."],
+    heroSub: "İşinizi doğru anlatan ve markanızın karakterini yansıtan web siteleri tasarlıyor ve geliştiriyorum.",
     heroCta: "İşlere bak",
     loading: "NIMAY / yükleniyor",
     work: {
@@ -93,7 +99,7 @@ export const tr = {
     studio: {
       index: "(04) Stüdyo",
       title: ["Merhaba,", "ben Nail."],
-      text: "Türkiye'de tek başıma web tasarım yapıyorum. Bu işe tasarımı sevdiğim için başladım; güzel yapılmış bir site görünce hâlâ durup bakıyorum. Projenizle konuşan, onu tasarlayan ve kodlayan kişi aynı: ben.",
+      text: studioStory,
       cta: "Stüdyoyu tanı",
     },
     contact: {
@@ -180,17 +186,15 @@ export const tr = {
     lead: "Türkiye'de tek başıma web tasarım yapıyorum.",
     index: "(01) Hakkımda",
     whyTitle: ["Bu işi neden", "yapıyorum"],
-    story: [
-      "Bu işe tasarımı sevdiğim için başladım. Güzel yapılmış bir site görünce hâlâ durup bakıyorum. Tersi de beni rahatsız ediyor: düz yazı yığınları, hiç hareket etmeyen sayfalar, yerleşimi oturmamış şekiller, bulanık görseller.",
-      "Herkesin içine sinen, ilk bakışta beğenilen tasarımlar yapmaya çalışıyorum. Kendi sitem bunun en iyi örneği: kaç kere baştan tasarladım. Projenizle konuşan, onu tasarlayan ve kodlayan kişi aynı: ben.",
-    ],
+    story: studioStory,
     facts: { place: "Konum", tech: "Teknoloji", time: "Süre", quote: "Teklif", timeValue: "7–14 iş günü", quoteValue: "Projeye özel, yazılı" },
     trustIndex: "(02) Güven",
     trustTitle: ["Neden bana", "güvenesiniz?"],
     trust: [
       "Henüz yayınlanmış bir müşteri işim yok. İşler sayfasındaki çalışma bir konsept; ne yaptığımı oradan görebilirsiniz.",
-      "Kapsam, fiyat ve süre yazılı gelir. Siz onaylamadan bir sonraki adıma geçmem.",
-      "Teklif istemek söz vermek demek değil. Önce konuşuruz, karar sizin.",
+      "Projeniz önemsenir. Sadece istenenleri yapıp teslim etmem, gerektiğinde kendi fikrimi söylerim ve daha iyi bir sonuç için birlikte düşünürüz.",
+      "Yapılabilecekleri ve yapılamayacakları açıkça konuşurum. Gerçekçi olmayan vaatte bulunmam.",
+      "Hedefim, portföyümde gururla göstereceğim ve sizin markanızı gönül rahatlığıyla temsil edecek bir iş çıkarmak.",
     ],
     cta: { title: ["Birlikte", "çalışalım."], link: "Projenizi anlatın", note: "Birkaç cümleyle anlatmanız yeterli." },
   },

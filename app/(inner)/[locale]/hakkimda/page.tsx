@@ -34,7 +34,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               {a.story.map((p) => <p className="lead" key={p}>{p}</p>)}
             </div>
             <div className="facts mono" data-r>
-              <div><span>{a.facts.place}</span>Türkiye · <Clock as="b" style={{ fontWeight: 500 }} /></div>
+              <div><span>{a.facts.place}</span>Türkiye<Clock as="b" before=" · " style={{ fontWeight: 500 }} /></div>
               <div><span>{a.facts.tech}</span>Next.js</div>
               <div><span>{a.facts.time}</span>{a.facts.timeValue}</div>
               <div><span>{a.facts.quote}</span>{a.facts.quoteValue}</div>

@@ -200,9 +200,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <span className="mono idx">{h.studio.index}</span>
               <h2 className="disp" style={{ marginTop: 18 }}><BrLines lines={h.studio.title} /></h2>
             </div>
-            <p data-r>{h.studio.text}</p>
+            <div data-r style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              {h.studio.text.map((p) => <p key={p}>{p}</p>)}
+            </div>
             <div className="facts mono" data-r>
-              <div><span>{content.about.facts.place}</span>Türkiye · <Clock as="b" id="clock2" interval={15000} style={{ fontWeight: 500 }} /></div>
+              <div><span>{content.about.facts.place}</span>Türkiye<Clock as="b" before=" · " id="clock2" interval={15000} style={{ fontWeight: 500 }} /></div>
               <div><span>{content.about.facts.tech}</span>Next.js</div>
               <div><span>{content.about.facts.time}</span>{content.about.facts.timeValue}</div>
               <div><span>{content.about.facts.quote}</span>{content.about.facts.quoteValue}</div>
